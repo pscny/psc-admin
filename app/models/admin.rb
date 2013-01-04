@@ -3,5 +3,6 @@ class Admin
   include Mongoid::Timestamps
 
   field :email
+  field :password
 
 end

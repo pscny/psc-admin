@@ -4,9 +4,7 @@ Feature:
   I can log in as an admin
 
   Scenario: An Admin logs in
-    Given the following admin exists:
-      | email             | password |
-      | admin@example.com | sekret   |
+    Given the admin admin@example.com with password sekret exists
     When I go to the admin login page
     And I fill in "email" with "admin@example.com"
     And I fill in "password" with "sekret"
