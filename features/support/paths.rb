@@ -3,7 +3,7 @@ module NavigationHelpers
     case page_name
 
     when /^the admin login page$/
-      admin_sessions_path
+      sign_in_path
 
     else
       begin

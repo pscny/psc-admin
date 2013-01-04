@@ -6,7 +6,7 @@ Feature:
   Scenario: An Admin logs in
     Given the admin admin@example.com with password sekret exists
     When I go to the admin login page
-    And I fill in "email" with "admin@example.com"
-    And I fill in "password" with "sekret"
-    And I press "Log in"
-    Then I should be logged in as an email with email "admin@example.com"
+    And I fill in "Email" with "admin@example.com"
+    And I fill in "Password" with "sekret"
+    And I press "Sign In"
+    Then I should be logged in as "admin@example.com"
