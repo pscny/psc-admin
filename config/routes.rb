@@ -1,4 +1,9 @@
 PscAdmin::Application.routes.draw do
+  match 'sign_in', :controller => :sessions, :action => :new, :as => :sign_in
+  resources :sessions, :only => [ :create ]
+
+  root :to => 'dashboard#show'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
