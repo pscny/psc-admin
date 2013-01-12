@@ -4,6 +4,8 @@ module NavigationHelpers
 
     when /^the admin login page$/
       sign_in_path
+    when /^the homepage$/
+      root_path
 
     else
       begin
