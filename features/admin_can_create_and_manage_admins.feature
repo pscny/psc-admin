@@ -22,8 +22,8 @@ Feature:
       | Mr Admin | mr.admin@example.com |
     When I follow "Admins"
     Then I should see "mr.admin@example.com"
-    When I follow "Edit" within the element for admin "mr.admin@example.com"
-    Then I should see "Edit"
+    When I follow "Mr Admin" within the element for admin "mr.admin@example.com"
+    Then I should see "Editing Mr Admin"
     When I fill in "Name" with "Jon"
     And I press "Update Admin"
     Then I should see "Jon" within the element for admin "mr.admin@example.com"
