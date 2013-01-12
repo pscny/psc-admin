@@ -46,17 +46,31 @@
           </a>
           <a class="brand" href="#">PscAdmin</a>
           <div class="container-fluid nav-collapse">
-
-            <% if current_admin -%>
-              <p class="navbar-text pull-right">
-                Logged in as <a href="#" class="navbar-link"><%= current_admin.email -%></a>
-              </p>
-            <% end -%>
-
             <ul class="nav">
               <li><%= link_to "Link1", "/path1"  %></li>
               <li><%= link_to "Link2", "/path2"  %></li>
               <li><%= link_to "Link3", "/path3"  %></li>
+            </ul>
+
+            <ul class="nav pull-right">
+              <% if current_admin -%>
+                <li>
+                  <p class="navbar-text">
+                    <%= current_admin.email -%>
+                  </p>
+                </li>
+                <li>
+                  <p class="navbar-text">
+                    <%= link_to 'Logout', sign_out_path -%>
+                  </p>
+                </li>
+              <% else -%>
+                <li>
+                  <p class="navbar-text">
+                    <%= link_to 'Login', sign_in_path -%>
+                  </p>
+                </li>
+              <% end -%>
             </ul>
           </div><!--/.nav-collapse -->
         </div>

@@ -6,6 +6,14 @@ class ApplicationController < ActionController::Base
   private
 
   def current_admin
-    @_current_admin ||= Admin.find(session[:admin_id]) if session[:admin_id]
+    @current_admin ||= Admin.find(session[:admin_id]) if session[:admin_id]
+  end
+
+  def sign_in(admin)
+    session[:admin_id] = admin.id
+  end
+
+  def sign_out
+    session[:admin_id] = nil
   end
 end
