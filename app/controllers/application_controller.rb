@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_admin
 
+  #before_filter :authorize_admin
+
   private
 
   def current_admin
@@ -16,4 +18,10 @@ class ApplicationController < ActionController::Base
   def sign_out
     session[:admin_id] = nil
   end
+
+  #def authorize_member
+  #  if current_admin.nil?
+  #    sign_out
+  #  end
+  #end
 end
