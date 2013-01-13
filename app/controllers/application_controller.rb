@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_admin
 
-  #before_filter :authorize_admin
+  before_filter :authorize_admin
 
   private
 
@@ -19,9 +19,12 @@ class ApplicationController < ActionController::Base
     session[:admin_id] = nil
   end
 
-  #def authorize_member
-  #  if current_admin.nil?
-  #    sign_out
-  #  end
-  #end
+  def authorize_admin
+    if current_admin.nil?
+      sign_out
+      flash[:error] = 'Please log in'
+      flash.keep
+      redirect_to sign_in_path
+    end
+  end
 end

@@ -2,18 +2,22 @@ module HtmlSelectorsHelpers
   include FormHelper
   def selector_for(locator)
     case locator
-    when "(.+) within (.+)"
+    when /(.+) within (.+)/
       "#{selector_for($2)} #{selector_for($1)}"
-    when "the page"
+    when /^the page$/
       "html > body"
-    when /the element for admin "(.+)"/
-      admin = Admin.where(:email => $1).first
-      '#' + element_id(admin)
+    when /^the element for admin "(.+)"$/
+      '#' + element_id(Admin.where(:email => $1).first)
+    when /^the link "([^"]+)"$/
+      "a:contains('#{$1}')"
+    when /^a link with the text "([^"]+)"$/
+      "a:contains('#{$1}')"
     when /^"(.+)"$/
       $1
     else
-      raise "Can't find mapping from \"#{locator}\" to a selector.\n" +
+      Rails.logger.warn "Can't find mapping from \"#{locator}\" to a selector.\n" +
         "Now, go and add a mapping in #{__FILE__}"
+      locator
     end
   end
 end
