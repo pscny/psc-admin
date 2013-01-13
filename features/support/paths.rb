@@ -2,7 +2,7 @@ module NavigationHelpers
   def path_to(page_name)
     case page_name
 
-    when /^the admin login page$/
+    when /^the login page$/
       sign_in_path
     when /^the homepage$/
       root_path
