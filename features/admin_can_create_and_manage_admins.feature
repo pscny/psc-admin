@@ -27,3 +27,17 @@ Feature:
     When I fill in "Name" with "Jon"
     And I press "Update Admin"
     Then I should see "Jon" within the element for admin "mr.admin@example.com"
+
+  Scenario: admins can delete admins
+    Given the following admins exist:
+      | name     | email                |
+      | Mr Admin | mr.admin@example.com |
+      | Ms Admin | ms.admin@example.com |
+    When I am on the admins page
+    Then I should see "Mr Admin" within the element for admin "mr.admin@example.com"
+    When I follow "Destroy" within the element for admin "mr.admin@example.com"
+    Then I should see "Successfully deleted Mr Admin"
+
+  Scenario: admins can not delete themselves
+    When I am on the admins page
+    Then I should not see "Destroy"
