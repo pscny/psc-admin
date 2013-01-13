@@ -17,14 +17,14 @@ class ApplicationController < ActionController::Base
 
   def sign_out
     session[:admin_id] = nil
+    redirect_to sign_in_path
   end
 
   def authorize_admin
     if current_admin.nil?
-      sign_out
       flash[:error] = 'Please log in'
       flash.keep
-      redirect_to sign_in_path
+      sign_out
     end
   end
 end

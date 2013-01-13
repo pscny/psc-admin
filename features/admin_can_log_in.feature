@@ -17,3 +17,4 @@ Feature:
     When I follow "Logout"
     Then I should see "Login"
     But I should not see "Logout"
+    And I should be on the login page
