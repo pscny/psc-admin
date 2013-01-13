@@ -31,16 +31,6 @@ module WithinHelpers
 end
 World(WithinHelpers)
 
-# Single-line step scoper
-When /^(.*) within (.*[^:])$/ do |step, parent|
-  with_scope(parent) { step step }
-end
-
-# Multi-line step scoper
-When /^(.*) within (.*[^:]):$/ do |step, parent, table_or_string|
-  with_scope(parent) { When "#{step}:", table_or_string }
-end
-
 Given /^(?:|I )am on (.+)$/ do |page_name|
   visit path_to(page_name)
 end
@@ -53,8 +43,17 @@ When /^(?:|I )press "([^"]*)"$/ do |button|
   click_button(button)
 end
 
-When /^(?:|I )follow "([^"]*)"$/ do |link|
-  click_link(link)
+When /^(?:|I )follow (.+)$/ do |link|
+  if matches = link.match(/^"([^"]+)"$/)
+    link = matches.to_a.last
+    click_link(link)
+  elsif matches = link.match(/"([^"]+)" within (.+)/)
+    with_scope(selector_for(matches[2])) do
+      click_link(matches[1])
+    end
+  else
+    click_link selector_for(link)
+  end
 end
 
 When /^(?:|I )fill in "([^"]*)" with "([^"]*)"$/ do |field, value|
@@ -102,39 +101,17 @@ When /^(?:|I )attach the file "([^"]*)" to "([^"]*)"$/ do |path, field|
   attach_file(field, File.expand_path(path))
 end
 
-Then /^(?:|I )should see "([^"]*)"$/ do |text|
-  if page.respond_to? :should
-    page.should have_content(text)
+Then /^(?:|I )should( not)? see (.+)$/ do |negator, text|
+  expectation = !!negator ? :should_not : :should
+
+  if matches = text.match(/^"([^"]+)"$/)
+    page.send( expectation, have_content(matches[1]) )
+  elsif matches = text.match(/"([^"]+)" within (.+)/)
+    with_scope(selector_for(matches[2])) do
+      page.send( expectation, have_content(matches[1]) )
+    end
   else
-    assert page.has_content?(text)
-  end
-end
-
-Then /^(?:|I )should see \/([^\/]*)\/$/ do |regexp|
-  regexp = Regexp.new(regexp)
-
-  if page.respond_to? :should
-    page.should have_xpath('//*', :text => regexp)
-  else
-    assert page.has_xpath?('//*', :text => regexp)
-  end
-end
-
-Then /^(?:|I )should not see "([^"]*)"$/ do |text|
-  if page.respond_to? :should
-    page.should have_no_content(text)
-  else
-    assert page.has_no_content?(text)
-  end
-end
-
-Then /^(?:|I )should not see \/([^\/]*)\/$/ do |regexp|
-  regexp = Regexp.new(regexp)
-
-  if page.respond_to? :should
-    page.should have_no_xpath('//*', :text => regexp)
-  else
-    assert page.has_no_xpath?('//*', :text => regexp)
+    page.send( expectation, have_css(selector_for(text)) )
   end
 end
 
