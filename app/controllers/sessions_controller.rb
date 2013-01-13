@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    admin = Admin.where(params[:admin]).first
+    admin = Admin.authenticate(params[:admin])
     sign_in admin
     redirect_to root_path
   end
