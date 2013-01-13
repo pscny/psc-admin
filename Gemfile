@@ -16,10 +16,11 @@ group :assets do
 end
 
 group :test do
-  gem 'factory_girl_rails'
   gem 'cucumber-rails', :require => false
   gem 'database_cleaner'
-  gem 'rspec-rails', '~> 2.0'
-  gem 'mongoid-rspec'
   gem 'debugger'
+  gem 'factory_girl_rails'
+  gem 'launchy'
+  gem 'mongoid-rspec'
+  gem 'rspec-rails', '~> 2.0'
 end
