@@ -6,6 +6,10 @@ gem 'jquery-rails'
 gem 'mongoid', '~> 3.0'
 gem 'simple_form'
 
+group :development do
+  gem 'foreman', '~> 0.60'
+end
+
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
