@@ -11,6 +11,5 @@ Given /^I am logged in$/ do
 end
 
 Given /^I am logged in as:$/ do |table|
-  options = table.present? ? table.hashes.first : {}
-  login(FactoryGirl.create(:admin, options))
+  login(FactoryGirl.create(:admin, table.hashes.first))
 end

@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
       redirect_to root_path
     else
       @admin = Admin.new params[:admin]
-      flash[:error] = "Oops, wrong email or password!"
+      flash.now.alert = "Oops, wrong email or password!"
       render :action => :new
     end
   end

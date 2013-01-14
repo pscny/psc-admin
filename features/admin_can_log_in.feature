@@ -21,7 +21,7 @@ Feature:
 
   Scenario: admin sees an error when their username or password is wrong
     Given the following admin exists:
-      | name  | email             | password |
+      | name  | email            | password |
       | Steve | good@example.com | sekret   |
     When I go to the homepage
     And I follow "Login"
