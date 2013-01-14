@@ -4,7 +4,9 @@ Feature:
   I can log in as an admin
 
   Background:
-    Given I am logged in
+    Given I am logged in as:
+      | name | email           |
+      | Tim  | tim@example.com |
     And I go to the homepage
 
   Scenario: admins can create more admins

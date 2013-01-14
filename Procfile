@@ -1,1 +1,1 @@
-web: bundle exec script/rails server -p 3000
+web: bundle exec script/rails server -p 3400

@@ -12,11 +12,14 @@ module HtmlSelectorsHelpers
       "a:contains('#{$1}')"
     when /^a link with the text "([^"]+)"$/
       "a:contains('#{$1}')"
+    when /^the "(.+)" field$/
+      $1
     when /^"(.+)"$/
       $1
     else
-      Rails.logger.warn "Can't find mapping from \"#{locator}\" to a selector.\n" +
-        "Now, go and add a mapping in #{__FILE__}"
+      puts "*"*80
+      puts "Named element: '#{locator}' was not found"
+      puts "*"*80
       locator
     end
   end
