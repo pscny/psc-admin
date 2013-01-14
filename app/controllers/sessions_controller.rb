@@ -7,8 +7,14 @@ class SessionsController < ApplicationController
 
   def create
     admin = Admin.authenticate(params[:admin])
-    sign_in admin
-    redirect_to root_path
+    if admin
+      sign_in admin
+      redirect_to root_path
+    else
+      flash[:error] = "Oops, wrong email or password!"
+      flash.keep
+      redirect_to :action => :new
+    end
   end
 
   def destroy

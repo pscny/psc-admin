@@ -18,3 +18,18 @@ Feature:
     Then I should see "Login"
     But I should not see "Logout"
     And I should be on the login page
+
+  Scenario: admin sees an error when their username and password is wrong
+    Given the following admin exists:
+      | name  | email             | password |
+      | Steve | good@example.com | sekret   |
+    When I go to the homepage
+    And I follow "Login"
+    And I fill in "Email" with "bad@example.com"
+    And I fill in "Password" with "sekret"
+    And I press "Sign In"
+    Then I should see "Oops, wrong email or password!"
+    When I fill in "Email" with "good@example.com"
+    And I fill in "Password" with "sekret"
+    And I press "Sign In"
+    Then I should be logged in as "Steve"
