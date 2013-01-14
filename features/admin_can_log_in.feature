@@ -19,7 +19,7 @@ Feature:
     But I should not see "Logout"
     And I should be on the login page
 
-  Scenario: admin sees an error when their username and password is wrong
+  Scenario: admin sees an error when their username or password is wrong
     Given the following admin exists:
       | name  | email             | password |
       | Steve | good@example.com | sekret   |
