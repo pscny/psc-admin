@@ -11,7 +11,7 @@ class AdminsController < ApplicationController
   def create
     @admin = Admin.new(params[:admin])
     if @admin.save
-      flash[:notice] = "Successfully created #{@admin.name}"
+      flash.keep.notice = "Successfully created #{@admin.name}"
       redirect_to edit_admin_path(@admin)
     else
       render :action => :new
@@ -25,7 +25,7 @@ class AdminsController < ApplicationController
   def update
     @admin = Admin.find(params[:id])
     if @admin.update_attributes(params[:admin])
-      flash[:notice] = "Successfully updated #{@admin.name}"
+      flash.keep.notice = "Successfully updated #{@admin.name}"
       redirect_to admins_path
     else
       render :action => :edit
@@ -35,7 +35,7 @@ class AdminsController < ApplicationController
   def destroy
     @admin = Admin.find(params[:id])
     if @admin.destroy
-      flash[:notice] = "Successfully deleted #{@admin.name}"
+      flash.keep.notice = "Successfully deleted #{@admin.name}"
     end
     redirect_to admins_path
   end

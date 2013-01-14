@@ -43,11 +43,3 @@ Feature:
   Scenario: admins can not delete themselves
     When I am on the admins page
     Then I should not see "Destroy"
-
-  Scenario: admins can change their own password
-    When I am on the admins page
-    And I follow "Tim" within the element for admin "tim@example.com"
-    When I fill in "Password" with "new-password"
-    When I fill in "Password Confirmation" with "new-password"
-    And I press "Update Admin"
-    Then I should see "Password successfully updated"
