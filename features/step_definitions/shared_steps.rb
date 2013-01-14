@@ -1,5 +1,6 @@
-Given /^I am logged in$/ do
-  admin = FactoryGirl.create(:admin)
+Given /^I am logged in( as:)?$/ do |_, table|
+  options = table.present? ? table.hashes.first : {}
+  admin = FactoryGirl.create(:admin, options)
   visit('/')
   click_link('Login')
   fill_in('Email',    :with => admin.email)

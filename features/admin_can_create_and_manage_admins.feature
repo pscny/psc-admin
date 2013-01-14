@@ -4,7 +4,9 @@ Feature:
   I can log in as an admin
 
   Background:
-    Given I am logged in
+    Given I am logged in as:
+      | name | email           |
+      | Tim  | tim@example.com |
     And I go to the homepage
 
   Scenario: admins can create more admins
@@ -41,3 +43,11 @@ Feature:
   Scenario: admins can not delete themselves
     When I am on the admins page
     Then I should not see "Destroy"
+
+  Scenario: admins can change their own password
+    When I am on the admins page
+    And I follow "Tim" within the element for admin "tim@example.com"
+    When I fill in "Password" with "new-password"
+    When I fill in "Password Confirmation" with "new-password"
+    And I press "Update Admin"
+    Then I should see "Password successfully updated"

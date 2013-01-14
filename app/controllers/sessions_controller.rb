@@ -6,14 +6,14 @@ class SessionsController < ApplicationController
   end
 
   def create
-    admin = Admin.authenticate(params[:admin])
-    if admin
-      sign_in admin
+    @admin = Admin.authenticate(params[:admin])
+    if @admin
+      sign_in @admin
       redirect_to root_path
     else
+      @admin = Admin.new params[:admin]
       flash[:error] = "Oops, wrong email or password!"
-      flash.keep
-      redirect_to :action => :new
+      render :action => :new
     end
   end
 

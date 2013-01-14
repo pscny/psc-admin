@@ -48,7 +48,7 @@ When /^(?:|I )follow (.+)$/ do |link|
     link = matches.to_a.last
     click_link(link)
   elsif matches = link.match(/"([^"]+)" within (.+)/)
-    with_scope(selector_for(matches[2])) do
+    with_scope(matches[2]) do
       click_link(matches[1])
     end
   else
@@ -107,7 +107,7 @@ Then /^(?:|I )should( not)? see (.+)$/ do |negator, text|
   if matches = text.match(/^"([^"]+)"$/)
     page.send( expectation, have_content(matches[1]) )
   elsif matches = text.match(/"([^"]+)" within (.+)/)
-    with_scope(selector_for(matches[2])) do
+    with_scope(matches[2]) do
       page.send( expectation, have_content(matches[1]) )
     end
   else

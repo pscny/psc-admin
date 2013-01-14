@@ -29,6 +29,7 @@ Feature:
     And I fill in "Password" with "sekret"
     And I press "Sign In"
     Then I should see "Oops, wrong email or password!"
+    And the "Email" field should contain "bad@example.com"
     When I fill in "Email" with "good@example.com"
     And I fill in "Password" with "sekret"
     And I press "Sign In"
