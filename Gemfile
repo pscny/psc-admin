@@ -5,6 +5,7 @@ gem 'bundler'
 gem 'jquery-rails'
 gem 'mongoid', '~> 3.0'
 gem 'simple_form'
+gem 'thin'
 
 group :development do
   gem 'foreman', '~> 0.60'
