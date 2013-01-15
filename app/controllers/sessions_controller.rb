@@ -6,6 +6,8 @@ class SessionsController < ApplicationController
   end
 
   def create
+    puts params[:admin]
+    puts params['admin']
     @admin = Admin.authenticate(params[:admin])
     if @admin
       sign_in @admin
