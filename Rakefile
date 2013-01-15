@@ -4,8 +4,11 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-require 'rspec/core/rake_task'
-RSpec::Core::RakeTask.new(:spec)
-task :default => :spec
+if %(development test).include?(Rails.env)
+  require 'rspec/core'
+  require 'rspec/core/rake_task'
+  RSpec::Core::RakeTask.new(:spec)
+  task :default => :spec
+end
 
 PscAdmin::Application.load_tasks

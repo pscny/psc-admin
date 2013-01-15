@@ -27,12 +27,23 @@ describe Admin, '.authenticate' do
   before { subject }
 
   it 'returns a user when the password matches' do
-    admin = Admin.authenticate(:email    => 'this@example.com',
-                               :password => 'p@sswerd')
+    admin = Admin.authenticate('this@example.com', 'p@sswerd')
     subject.should == admin
   end
 
   it 'returns nil when the password does not match' do
-    Admin.authenticate(:email => 'this@example.com', :password => 'wrong').should be_nil
+    Admin.authenticate('this@example.com', 'wrong').should be_nil
+  end
+end
+
+describe Admin, '#authenticated?' do
+  subject { FactoryGirl.create(:admin, :password => 'p@sswerd') }
+
+  it 'returns true if the password matches' do
+    subject.authenticated?('p@sswerd').should be_true
+  end
+
+  it 'returns true if the password matches' do
+    subject.authenticated?('password').should be_false
   end
 end

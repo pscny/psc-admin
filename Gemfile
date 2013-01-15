@@ -1,10 +1,13 @@
 source 'https://rubygems.org'
 
+ruby '1.9.3'
+
 gem 'rails', '3.2.10'
 gem 'bundler'
 gem 'jquery-rails'
 gem 'mongoid', '~> 3.0'
 gem 'simple_form'
+gem 'thin'
 
 group :development do
   gem 'foreman', '~> 0.60'
