@@ -12,6 +12,7 @@ class Admin
   field :salt
 
   def self.authenticate(email, password)
+    return nil   if     email.blank? or password.blank?
     return nil   unless admin = where(:email => email).first
     return admin if     admin.authenticated?(password)
   end
