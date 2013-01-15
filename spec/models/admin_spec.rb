@@ -27,12 +27,11 @@ describe Admin, '.authenticate' do
   before { subject }
 
   it 'returns a user when the password matches' do
-    admin = Admin.authenticate(:email    => 'this@example.com',
-                               :password => 'p@sswerd')
+    admin = Admin.authenticate('this@example.com', 'p@sswerd')
     subject.should == admin
   end
 
   it 'returns nil when the password does not match' do
-    Admin.authenticate(:email => 'this@example.com', :password => 'wrong').should be_nil
+    Admin.authenticate('this@example.com', 'wrong').should be_nil
   end
 end

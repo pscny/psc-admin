@@ -11,9 +11,9 @@ class Admin
   field :encrypted_password
   field :salt
 
-  def self.authenticate(params)
-    return nil   unless admin = where(:email => params[:email]).first
-    return admin if     admin.authenticated?(params[:password])
+  def self.authenticate(email, password)
+    return nil   unless admin = where(:email => email).first
+    return admin if     admin.authenticated?(password)
   end
 
   def authenticated?(password)
