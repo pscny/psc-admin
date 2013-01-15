@@ -13,8 +13,6 @@ class Admin
 
   def self.authenticate(email, password)
     return nil   if     email.blank? or password.blank?
-    puts where(:email => email)
-    puts where(:email => email).first
     return nil   unless admin = where(:email => email).first
     return admin if     admin.authenticated?(password)
   end
