@@ -24,6 +24,7 @@ class AdminsController < ApplicationController
 
   def update
     @admin = Admin.find(params[:id])
+    params[:admin].delete(:password) if params[:admin][:password].blank?
     if @admin.update_attributes(params[:admin])
       flash.keep.notice = "Successfully updated #{@admin.name}"
       redirect_to admins_path

@@ -11,6 +11,6 @@ FactoryGirl.define do
   factory :admin do
     name     { generate(:name) }
     email    { generate(:email) }
-    password 'sekret'
+    password 'supersekret'
   end
 end

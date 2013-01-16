@@ -1,30 +1,5 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  helper_method :current_admin
-
-  before_filter :authorize_admin
-
-  private
-
-  def current_admin
-    @current_admin ||= Admin.find(session[:admin_id]) if session[:admin_id]
-  end
-
-  def sign_in(admin)
-    session[:admin_id] = admin.id
-  end
-
-  def sign_out
-    session[:admin_id] = nil
-    redirect_to sign_in_path
-  end
-
-  def authorize_admin
-    if current_admin.nil?
-      flash[:error] = 'Please log in'
-      flash.keep
-      sign_out
-    end
-  end
+  before_filter :authenticate_admin!
 end
