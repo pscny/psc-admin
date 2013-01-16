@@ -5,13 +5,13 @@ Feature:
 
   Scenario: admins can log in and log out
     Given the following admin exists:
-      | name  | email             | password |
-      | Steve | steve@example.com | sekret   |
+      | name  | email             | password     |
+      | Steve | steve@example.com | hugesekret   |
     When I go to the homepage
     And I follow "Login"
     And I fill in "Email" with "steve@example.com"
-    And I fill in "Password" with "sekret"
-    And I press "Sign In"
+    And I fill in "Password" with "hugesekret"
+    And I press "Sign in"
     Then I should be logged in as "Steve"
     And I should see "Logout"
     When I follow "Logout"
@@ -21,16 +21,16 @@ Feature:
 
   Scenario: admin sees an error when their username or password is wrong
     Given the following admin exists:
-      | name  | email            | password |
-      | Steve | good@example.com | sekret   |
+      | name  | email            | password      |
+      | Steve | good@example.com | giantsekret   |
     When I go to the homepage
     And I follow "Login"
     And I fill in "Email" with "bad@example.com"
-    And I fill in "Password" with "sekret"
-    And I press "Sign In"
-    Then I should see "Oops, wrong email or password!"
+    And I fill in "Password" with "giantsekret"
+    And I press "Sign in"
+    Then I should see "Invalid email or password."
     And the "Email" field should contain "bad@example.com"
     When I fill in "Email" with "good@example.com"
-    And I fill in "Password" with "sekret"
-    And I press "Sign In"
+    And I fill in "Password" with "giantsekret"
+    And I press "Sign in"
     Then I should be logged in as "Steve"

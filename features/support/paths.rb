@@ -3,7 +3,7 @@ module NavigationHelpers
     case page_name
 
     when /^the login page$/
-      sign_in_path
+      new_admin_session_path
     when /^the homepage$/
       root_path
 
