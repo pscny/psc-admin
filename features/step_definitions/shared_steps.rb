@@ -3,7 +3,7 @@ def login(admin)
   click_link('Login')
   fill_in('Email',    :with => admin.email)
   fill_in('Password', :with => admin.password)
-  click_button('Sign In')
+  click_button('Sign in')
 end
 
 Given /^I am logged in$/ do

@@ -13,7 +13,7 @@ Feature:
     When I follow "Admins"
     And I follow "New Admin"
     And I fill in "Email" with "admin@example.com"
-    And I fill in "Password" with "sekret"
+    And I fill in "Password" with "bigsekret"
     And I fill in "Name" with "First Last"
     And I press "Create Admin"
     Then I should see "Editing First Last"

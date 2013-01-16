@@ -8,6 +8,7 @@ gem 'jquery-rails'
 gem 'mongoid', '~> 3.0'
 gem 'simple_form'
 gem 'thin'
+gem 'devise'
 
 group :development do
   gem 'foreman', '~> 0.60'
