@@ -82,7 +82,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 10
 
   # Setup a pepper to generate the encrypted password.
-  # config.pepper = "2691ce2f7ec332388841d0e0fa5aeacd81e41be860fe544b12ed91999cc66f8eae2a39a11aae4f168c57924b2632d58c8ce1ecec9b2a34dab8e15d5cc22671e7"
+  config.pepper = "2691ce2f7ec332388841d0e0fa5aeacd81e41be860fe544b12ed91999cc66f8eae2a39a11aae4f168c57924b2632d58c8ce1ecec9b2a34dab8e15d5cc22671e7"
 
   # ==> Configuration for :confirmable
   # A period that the user is allowed to access the website even without
@@ -122,12 +122,12 @@ Devise.setup do |config|
 
   # ==> Configuration for :validatable
   # Range for password length. Default is 8..128.
-  config.password_length = 8..128
+  config.password_length = 4..128
 
   # Email regex used to validate email formats. It simply asserts that
   # an one (and only one) @ exists in the given string. This is mainly
   # to give user feedback and not to assert the e-mail validity.
-  # config.email_regexp = /\A[^@]+@[^@]+\z/
+  config.email_regexp = /\A[^@]+@[^@]+\z/
 
   # ==> Configuration for :timeoutable
   # The time you want to timeout the user session without activity. After this
