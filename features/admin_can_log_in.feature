@@ -5,8 +5,8 @@ Feature:
 
   Scenario: admins can log in and log out
     Given the following admin exists:
-      | name  | email             | password     |
-      | Steve | steve@example.com | hugesekret   |
+      | name  | email             | password   |
+      | Steve | steve@example.com | hugesekret |
     When I go to the homepage
     And I follow "Login"
     And I fill in "Email" with "steve@example.com"
@@ -21,8 +21,8 @@ Feature:
 
   Scenario: admin sees an error when their username or password is wrong
     Given the following admin exists:
-      | name  | email            | password      |
-      | Steve | good@example.com | giantsekret   |
+      | name  | email            | password    |
+      | Steve | good@example.com | giantsekret |
     When I go to the homepage
     And I follow "Login"
     And I fill in "Email" with "bad@example.com"
