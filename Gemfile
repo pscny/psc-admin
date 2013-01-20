@@ -9,6 +9,7 @@ gem 'mongoid', '~> 3.0'
 gem 'simple_form'
 gem 'thin'
 gem 'devise'
+gem 'bootstrap-datepicker-rails'
 
 group :development do
   gem 'foreman', '~> 0.60'
@@ -28,6 +29,7 @@ group :test do
   gem 'database_cleaner'
   gem 'debugger'
   gem 'factory_girl_rails'
+  gem 'faker'
   gem 'launchy'
   gem 'mongoid-rspec'
   gem 'rspec-rails', '~> 2.0'
