@@ -1,8 +1,9 @@
 class SubscribersController < ApplicationController
+
   # GET /subscribers
   # GET /subscribers.json
   def index
-    @subscribers = Subscriber.all
+    @subscribers = Subscriber.page(params[:page] || 1)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -60,7 +61,10 @@ class SubscribersController < ApplicationController
 
     respond_to do |format|
       if @subscriber.update_attributes(params[:subscriber])
-        format.html { redirect_to @subscriber, notice: 'Subscriber was successfully updated.' }
+        format.html do
+          flash.keep.notice = "Successfully updated #{@subscriber.full_name}"
+          redirect_to action: :index, notice: 'Subscriber was successfully updated.'
+        end
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

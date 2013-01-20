@@ -20,8 +20,11 @@ Feature:
 
   Scenario: Admin edits and existing subscriber
     Given the following subscriber exists:
-      | first name | last name |
-      | Jake       | Douglas   |
+      | first name | last name | email            |
+      | Jake       | Douglas   | jake@example.com |
     When I follow "Subscribers"
     And I follow "Jake Douglas"
     Then I should see "Editing Jake Douglas"
+    When I fill in "Last name" with "Phillips"
+    And I press "Update Subscriber"
+    Then I should see "Jake Phillips" within the element for subscriber "jake@example.com"

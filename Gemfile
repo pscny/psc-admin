@@ -2,14 +2,15 @@ source 'https://rubygems.org'
 
 ruby '1.9.3'
 
-gem 'rails', '3.2.10'
+gem 'bootstrap-datepicker-rails'
 gem 'bundler'
+gem 'devise'
 gem 'jquery-rails'
+gem 'kaminari-bootstrap'
 gem 'mongoid', '~> 3.0'
+gem 'rails', '3.2.10'
 gem 'simple_form'
 gem 'thin'
-gem 'devise'
-gem 'bootstrap-datepicker-rails'
 
 group :development do
   gem 'foreman', '~> 0.60'
