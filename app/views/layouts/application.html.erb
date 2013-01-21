@@ -44,11 +44,12 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#">PscAdmin</a>
+          <a class="brand" href="#">PSC Admin Tool</a>
           <div class="container-fluid nav-collapse">
             <%= admin_only do -%>
               <ul class="nav">
                 <li><%= link_to 'Admins', admins_path -%></li>
+                <li><%= link_to 'Subscribers', subscribers_path -%></li>
               </ul>
             <% end -%>
 

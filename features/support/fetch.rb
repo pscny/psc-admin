@@ -1,0 +1,23 @@
+module FetchHelpers
+  def fetch_admin(email)
+    fetch Admin, :email => email
+  end
+
+  def fetch_subscriber(email)
+    fetch Subscriber, :email => email
+  end
+
+  private
+
+  def fetch(klass, where_opts)
+    klass.where(where_opts).first or
+      raise "No #{klass} found for #{where_opts.inspect}"
+  end
+
+  def fetch_or_create(klass, where_opts)
+    klass.where(where_opts).first or
+      create(klass.name.underscore.to_sym, where_opts)
+  end
+end
+
+World(FetchHelpers)

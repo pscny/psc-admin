@@ -7,6 +7,7 @@ namespace :psc do
     desc "Creates some sample data for testing locally"
     task :prime => [:ensure_non_production_environment, 'mongo:drop']  do
       require 'factory_girl_rails'
+      require 'faker'
 
       ActiveSupport::Notifications.subscribe("factory_girl.run_factory") do |name, start, finish, id, payload|
         $stdout.print('.')
@@ -17,6 +18,10 @@ namespace :psc do
 
       FactoryGirl.create(:admin, :email    => 'admin@example.com',
                                  :password => 'test')
+
+      30.times do
+        FactoryGirl.create(:subscriber)
+      end
 
       print "done.\n"
     end
