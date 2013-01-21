@@ -2,13 +2,15 @@ source 'https://rubygems.org'
 
 ruby '1.9.3'
 
-gem 'rails', '3.2.10'
+gem 'bootstrap-datepicker-rails'
 gem 'bundler'
+gem 'devise'
 gem 'jquery-rails'
+gem 'kaminari-bootstrap'
 gem 'mongoid', '~> 3.0'
+gem 'rails', '3.2.10'
 gem 'simple_form'
 gem 'thin'
-gem 'devise'
 
 group :development do
   gem 'foreman', '~> 0.60'
@@ -28,6 +30,7 @@ group :test do
   gem 'database_cleaner'
   gem 'debugger'
   gem 'factory_girl_rails'
+  gem 'faker'
   gem 'launchy'
   gem 'mongoid-rspec'
   gem 'rspec-rails', '~> 2.0'

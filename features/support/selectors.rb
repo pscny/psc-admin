@@ -1,13 +1,14 @@
 module HtmlSelectorsHelpers
   include FormHelper
+
   def selector_for(locator)
     case locator
     when /(.+) within (.+)/
       "#{selector_for($2)} #{selector_for($1)}"
     when /^the page$/
       "html > body"
-    when /^the element for admin "(.+)"$/
-      '#' + element_id(Admin.where(:email => $1).first)
+    when /^the element for (.+) "(.+)"$/
+      '#' + element_id(send("fetch_#{$1}", $2))
     when /^the link "([^"]+)"$/
       "a:contains('#{$1}')"
     when /^a link with the text "([^"]+)"$/

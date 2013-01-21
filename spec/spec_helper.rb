@@ -16,6 +16,7 @@ end
 
 RSpec.configure do |config|
   config.include Mongoid::Matchers
+  config.include FactoryGirl::Syntax::Methods
 
   # ## Mock Framework
   #
