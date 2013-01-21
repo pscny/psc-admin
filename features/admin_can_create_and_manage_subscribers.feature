@@ -16,7 +16,7 @@ Feature:
     And select "Brochure" from "Source"
     And fill in "Date received" with "2012/6/19"
     And I press "Create Subscriber"
-    Then I should see "Subscriber was successfully created."
+    Then I should see "James Zevin was successfully created."
 
   Scenario: Admin edits and existing subscriber
     Given the following subscriber exists:
