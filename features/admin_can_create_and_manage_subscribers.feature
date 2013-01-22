@@ -28,3 +28,15 @@ Feature:
     When I fill in "Last name" with "Phillips"
     And I press "Update Subscriber"
     Then I should see "Jake Phillips" within the element for subscriber "jake@example.com"
+
+  Scenario: Admin can delete subscribers
+    Given the following subscriber exists:
+      | first name | last name | email            |
+      | Jake       | Douglas   | jake@example.com |
+      | Fake       | Douglas   | fake@example.com |
+    When I follow "Subscribers"
+    Then I should see "Jake Douglas"
+    And I should see "Fake Douglas"
+    When I follow "Destroy" within the element for subscriber "jake@example.com"
+    Then I should not see "Jake Douglas"
+    But I should see "Fake Douglas"
