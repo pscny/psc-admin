@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Subscriber do
   it { should be_a(Mongoid::Document) }
-  it { should be_a(Mongoid::Timestamps) }
+  it { be_timestamped_document }
 
   it { should have_field(:first_name) }
   it { should have_field(:last_name) }
@@ -24,7 +24,12 @@ describe Subscriber, 'validations' do
   it { should validate_presence_of(:email) }
   it { should validate_uniqueness_of(:email) }
   it { should validate_inclusion_of(:source).to_allow(%w{ brochure concert online order renewal }) }
+  it { should validate_presence_of(:address1) }
+  it { should validate_presence_of(:city) }
   it { should validate_inclusion_of(:state).to_allow(PscVariables::STATES.values.map{|h|h['abbreviation']}) }
+  it { should validate_presence_of(:zip_code) }
+  it { should validate_format_of(:zip_code).to_allow('12345').to_allow('12345-4321').not_to_allow('1234-12345') }
+
 end
 
 describe Subscriber, '#name' do
