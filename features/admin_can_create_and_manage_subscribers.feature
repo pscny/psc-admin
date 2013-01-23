@@ -7,6 +7,7 @@ Feature:
     Given I am logged in
     And I go to the homepage
 
+  @thisone
   Scenario: Admin creates a subscriber
     When I follow "Subscribers"
     And I follow "New Subscriber"
@@ -15,6 +16,11 @@ Feature:
     And fill in "Email" with "james.zevin@example.com"
     And select "Brochure" from "Source"
     And fill in "Date received" with "2012/6/19"
+    And I fill in "Address Line One" with "123 Main St"
+    And I fill in "Address Line Two" with "Apt 14A"
+    And I fill in "City" with "Brooklyn"
+    And select "New York" from "State"
+    And I fill in "Zip Code" with "11201"
     And I press "Create Subscriber"
     Then I should see "James Zevin was successfully created."
 
