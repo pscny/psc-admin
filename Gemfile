@@ -34,6 +34,5 @@ group :test do
   gem 'launchy'
   gem 'mongoid-rspec'
   gem 'parallel_tests', '~> 0.9'
-  gem 'parallel'
   gem 'rspec-rails', '~> 2.0'
 end

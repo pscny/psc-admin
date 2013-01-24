@@ -236,7 +236,6 @@ DEPENDENCIES
   libv8 (~> 3.11.8)
   mongoid (~> 3.0)
   mongoid-rspec
-  parallel
   parallel_tests (~> 0.9)
   rails (= 3.2.10)
   rspec-rails (~> 2.0)
