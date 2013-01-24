@@ -22,7 +22,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
   gem 'therubyracer', :platforms => :ruby
   gem 'libv8', '~> 3.11.8'
-  gem "twitter-bootstrap-rails"
+  gem 'twitter-bootstrap-rails'
 end
 
 group :test do
@@ -33,5 +33,7 @@ group :test do
   gem 'faker'
   gem 'launchy'
   gem 'mongoid-rspec'
+  gem 'parallel_tests', '~> 0.9'
+  gem 'parallel'
   gem 'rspec-rails', '~> 2.0'
 end
