@@ -5,8 +5,10 @@
 require File.expand_path('../config/application', __FILE__)
 
 if %(development test).include?(Rails.env)
+  require 'parallel_tests/tasks'
   require 'rspec/core'
   require 'rspec/core/rake_task'
+
   RSpec::Core::RakeTask.new(:spec)
   task :default => :spec
 end
