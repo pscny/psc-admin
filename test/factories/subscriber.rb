@@ -9,6 +9,9 @@ FactoryGirl.define do
     last_name  { Faker::Name.last_name }
     email      { Faker::Internet.email }
     source     { Subscriber::SOURCES.sample }
+    address1   { Faker::Address.street_address }
+    city       { Faker::Address.city }
     state      { PscVariables::STATES.values.map{|h|h['abbreviation']}.sample }
+    zip_code   { Faker::Address.zip_code }
   end
 end
