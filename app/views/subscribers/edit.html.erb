@@ -3,4 +3,5 @@
 <%= render 'form', :subscriber => @subscriber %>
 
 <%= link_to 'Show', @subscriber %> |
+<%= link_to 'Destroy', @subscriber, :method => :delete, :data => { :confirm => 'Are you sure?' } %>
 <%= link_to 'Back', subscribers_path %>

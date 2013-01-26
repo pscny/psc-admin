@@ -16,7 +16,7 @@
   <% @subscribers.each do |subscriber| %>
     <tr id='<%= element_id(subscriber) -%>'>
       <td><%= link_to subscriber.full_name, edit_subscriber_path(subscriber) %></td>
-      <td><%= link_to 'Destroy', subscriber, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
+      <td><%= subscriber.email -%></td>
     </tr>
   <% end %>
   </tbody>
