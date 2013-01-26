@@ -5,12 +5,16 @@
     <%= f.input :first_name %>
     <%= f.input :last_name %>
     <%= f.input :email %>
-    <%= f.input :source, :collection => Subscriber::SOURCES.map(&:titleize), :prompt => 'Please select a source' %>
+    <%= f.input :source, :collection => Subscriber::SOURCES.map{ |source| [ source.titleize, source ] }, :prompt => 'Please select a source' %>
     <%= f.input :received_at, :input_html => { 'data-behaviour' => 'datepicker' }, :label => 'Date received' %>
+    <%= f.input :address1, :label => 'Address Line One' %>
+    <%= f.input :address2, :label => 'Address Line Two' %>
+    <%= f.input :city %>
+    <%= f.input :state, :collection => PscVariables::STATES.values.map {|state| [ state['name'], state['abbreviation'] ] }, :prompt => 'Please select a state' %>
+    <%= f.input :zip_code, :label => 'Zip Code' %>
   </div>
 
   <div class="form-actions">
     <%= f.button :submit %>
-  </div>
-
+  </div> 
 <% end %>

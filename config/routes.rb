@@ -4,5 +4,5 @@ PscAdmin::Application.routes.draw do
   resources :admins
   resources :subscribers
 
-  root :to => 'dashboard#show'
+  root :to => 'subscribers#index'
 end
