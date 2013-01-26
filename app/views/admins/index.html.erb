@@ -28,4 +28,6 @@
 
 <br />
 
-<%= link_to 'New Admin', new_admin_path %>
+<% content_for :actions do -%>
+  <li><%= link_to 'New Admin', new_admin_path %></li>
+<% end -%>
