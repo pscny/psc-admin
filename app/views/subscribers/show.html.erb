@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 
-<%= link_to 'Edit', edit_subscriber_path(@subscriber) %> |
-<%= link_to 'Back', subscribers_path %>
+<% content_for :actions do -%>
+  <li><%= link_to 'Edit', edit_subscriber_path(@subscriber) %></li>
+  <li><%= link_to 'Back', subscribers_path %></li>
+<% end -%>
