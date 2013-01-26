@@ -4,5 +4,6 @@
 
 <% content_for :actions do -%>
   <li><%= link_to 'Show', @subscriber %></li>
+  <li><%= link_to 'Destroy', @subscriber, :method => :delete, :data => { :confirm => 'Are you sure?' } %></li>
   <li><%= link_to 'Back', subscribers_path %></li>
 <% end -%>
