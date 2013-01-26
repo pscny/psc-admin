@@ -2,5 +2,7 @@
 
 <%= render 'form', :subscriber => @subscriber %>
 
-<%= link_to 'Show', @subscriber %> |
-<%= link_to 'Back', subscribers_path %>
+<% content_for :actions do -%>
+  <li><%= link_to 'Show', @subscriber %></li>
+  <li><%= link_to 'Back', subscribers_path %></li>
+<% end -%>
