@@ -7,7 +7,6 @@ Feature:
     Given I am logged in
     And I go to the homepage
 
-  @thisone
   Scenario: Admin creates a subscriber
     When I follow "Subscribers"
     And I follow "New Subscriber"
@@ -50,7 +49,6 @@ Feature:
     Then I should not see "Jake Douglas"
     But I should see "Fake Douglas"
 
-  @thisone
   Scenario: Admin can search for subscriber by name
     Given the following subscriber exists:
       | first name | last name | email            |
