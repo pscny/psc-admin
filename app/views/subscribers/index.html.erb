@@ -1,9 +1,5 @@
 <h1>Listing subscribers</h1>
 
-<%= link_to 'New Subscriber', new_subscriber_path %>
-
-<br />
-
 <%= simple_form_for(@subscriber, :html => { :method => :get, :action => subscribers_path, :id => 'search-subscribers' } ) do |f| %>
   <%= f.error_notification %>
 
@@ -30,7 +26,7 @@
   <% @subscribers.each do |subscriber| %>
     <tr id='<%= element_id(subscriber) -%>'>
       <td><%= link_to subscriber.full_name, edit_subscriber_path(subscriber) %></td>
-      <td><%= link_to 'Destroy', subscriber, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
+      <td><%= subscriber.email -%></td>
     </tr>
   <% end %>
   </tbody>
@@ -39,3 +35,7 @@
 <br />
 
 <%= paginate @subscribers %>
+
+<% content_for :actions do -%>
+  <li><%= link_to 'New Subscriber', new_subscriber_path %></li>
+<% end -%>

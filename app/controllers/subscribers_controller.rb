@@ -30,7 +30,7 @@ class SubscribersController < ApplicationController
 
     if @subscriber.save
       flash.keep.notice = "#{@subscriber.full_name} was successfully created."
-      redirect_to @subscriber
+      redirect_to action: :index
     else
       render action: 'new'
     end
