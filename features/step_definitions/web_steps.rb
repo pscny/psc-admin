@@ -22,6 +22,12 @@ module WithinHelpers
 end
 World(WithinHelpers)
 
+Given /^(.+) within (.+)$/ do |step, selector|
+  with_scope(selector) do
+    steps %{ When #{step} }
+  end
+end
+
 Given /^(?:|I )am on (.+)$/ do |page_name|
   visit path_to(page_name)
 end

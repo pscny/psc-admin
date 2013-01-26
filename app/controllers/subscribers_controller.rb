@@ -1,7 +1,16 @@
 class SubscribersController < ApplicationController
 
   def index
+    @subscriber  = Subscriber.new(params[:subscriber] || {})
     @subscribers = Subscriber.page(params[:page] || 1)
+    if params[:subscriber]
+      query = params[:subscriber].reject{|k,v| v.blank?}
+      # regixify the params
+      @subscribers = @subscribers.where(query)
+    end
+
+
+    @subscribers
   end
 
   def show

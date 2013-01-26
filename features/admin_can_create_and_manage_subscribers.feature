@@ -40,3 +40,27 @@ Feature:
     When I follow "Destroy" within the element for subscriber "jake@example.com"
     Then I should not see "Jake Douglas"
     But I should see "Fake Douglas"
+
+  @thisone
+  Scenario: Admin can search for subscriber by name
+    Given the following subscriber exists:
+      | first name | last name | email            |
+      | Jake       | Douglas   | jake@example.com |
+      | Fake       | Douglas   | fake@example.com |
+      | Paul       | McCartney | paul@example.com |
+    And I follow "Subscribers"
+    When I fill in "Last name" with "Douglas" within #search-subscribers
+    And I press "Search"
+    Then I should see "Jake Douglas"
+    And I should see "Fake Douglas"
+    But I should not see "Paul McCartney"
+    When I fill in "First name" with "Jake" within #search-subscribers
+    And I fill in "Last name" with "" within #search-subscribers
+    And I press "Search"
+    Then I should see "Jake Douglas"
+    But I should not see "Fake Douglas"
+    When I fill in "First name" with "Fake" within #search-subscribers
+    And I fill in "Last name" with "" within #search-subscribers
+    And I press "Search"
+    Then I should not see "Jake Douglas"
+    But I should see "Fake Douglas"

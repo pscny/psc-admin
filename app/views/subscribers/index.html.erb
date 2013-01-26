@@ -4,6 +4,20 @@
 
 <br />
 
+<%= simple_form_for(@subscriber, :html => { :method => :get, :action => subscribers_path, :id => 'search-subscribers' } ) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :first_name %>
+    <%= f.input :last_name %>
+    <%= f.input :email %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, :value => 'Search' %>
+  </div>
+<% end %>
+
 <table class='table table-hover table-striped'>
   <thead>
     <tr>
