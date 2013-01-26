@@ -17,7 +17,7 @@ class Subscriber
   field :secondary_phone
   field :email
   field :source
-  field :received_at, :type => DateTime
+  field :received_at, :type => Date
 
   validates :first_name, :presence  => true
   validates :last_name,  :presence  => true

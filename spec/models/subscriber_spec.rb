@@ -15,7 +15,7 @@ describe Subscriber do
   it { should have_field(:secondary_phone) }
   it { should have_field(:email) }
   it { should have_field(:source) }
-  it { should have_field(:received_at).of_type(DateTime) }
+  it { should have_field(:received_at).of_type(Date) }
 end
 
 describe Subscriber, 'validations' do
