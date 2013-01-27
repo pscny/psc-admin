@@ -1,7 +1,6 @@
 class SubscribersController < ApplicationController
 
   def index
-    @subscriber  = Subscriber.new(params[:subscriber] || {})
     @subscribers = Subscriber.page(params[:page] || 1)
     if @query = params[:query]
       regex = /#{@query}/i
