@@ -53,27 +53,23 @@ Feature:
     Given the following subscriber exists:
       | first name | last name | email                   |
       | Jake       | Douglas   | jake@example.com        |
-      | Fake       | Douglas   | fake@example.com        |
       | Paul       | McCartney | beatles_fan@example.com |
     And I follow "Subscribers"
     When I fill in "query" with "Douglas"
     And I press "Search"
     Then I should see "Jake Douglas"
-    And I should see "Fake Douglas"
     But I should not see "Paul McCartney"
     And the "query" field should contain "Douglas"
     When I fill in "query" with "Jake"
     And I press "Search"
     Then I should see "Jake Douglas"
-    But I should not see "Fake Douglas"
-    And I should not see "Paul McCartney"
-    When I fill in "query" with "Fake"
-    And I press "Search"
-    Then I should see "Fake Douglas"
-    But I should not see "Jake Douglas"
     And I should not see "Paul McCartney"
     When I fill in "query" with "beatles"
     And I press "Search"
     Then I should see "Paul McCartney"
-    But I should not see "Fake Douglas"
     And I should not see "Jake Douglas"
+    When I fill in "query" with "nothing"
+    And I press "Search"
+    Then I should not see "Paul McCartney"
+    And I should not see "Jake Douglas"
+    But I should see "No Subscribers Found"

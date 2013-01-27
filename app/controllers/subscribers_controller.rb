@@ -8,6 +8,7 @@ class SubscribersController < ApplicationController
                                        { :last_name  => regex },
                                        { :email      => regex } ])
     end
+    flash.alert = 'No Subscribers Found' if @subscribers.none?
     @subscribers
   end
 
