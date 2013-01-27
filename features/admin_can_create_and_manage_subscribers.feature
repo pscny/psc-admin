@@ -7,7 +7,6 @@ Feature:
     Given I am logged in
     And I go to the homepage
 
-  @thisone
   Scenario: Admin creates a subscriber
     When I follow "Subscribers"
     And I follow "New Subscriber"
@@ -49,3 +48,28 @@ Feature:
     And I follow "Destroy"
     Then I should not see "Jake Douglas"
     But I should see "Fake Douglas"
+
+  Scenario: Admin can search for subscriber by name
+    Given the following subscriber exists:
+      | first name | last name | email                   |
+      | Jake       | Douglas   | jake@example.com        |
+      | Paul       | McCartney | beatles_fan@example.com |
+    And I follow "Subscribers"
+    When I fill in "query" with "Douglas"
+    And I press "Search"
+    Then I should see "Jake Douglas"
+    But I should not see "Paul McCartney"
+    And the "query" field should contain "Douglas"
+    When I fill in "query" with "Jake"
+    And I press "Search"
+    Then I should see "Jake Douglas"
+    And I should not see "Paul McCartney"
+    When I fill in "query" with "beatles"
+    And I press "Search"
+    Then I should see "Paul McCartney"
+    And I should not see "Jake Douglas"
+    When I fill in "query" with "nothing"
+    And I press "Search"
+    Then I should not see "Paul McCartney"
+    And I should not see "Jake Douglas"
+    But I should see "No Subscribers Found"
