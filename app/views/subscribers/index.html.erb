@@ -1,7 +1,7 @@
 <h1>Listing subscribers</h1>
 
 <%= form_tag(subscribers_path, :method => 'get', :class => 'form-search') do %>
-  <%= search_field_tag(:query, nil, :class => 'input-medium search-query' ) %>
+  <%= search_field_tag(:query, @query, :class => 'input-medium search-query' ) %>
   <%= submit_tag('Search', :class => 'btn' ) %>
 <% end %>
 

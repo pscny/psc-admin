@@ -49,25 +49,32 @@ Feature:
     Then I should not see "Jake Douglas"
     But I should see "Fake Douglas"
 
+  @thisone
   Scenario: Admin can search for subscriber by name
     Given the following subscriber exists:
-      | first name | last name | email            |
-      | Jake       | Douglas   | jake@example.com |
-      | Fake       | Douglas   | fake@example.com |
-      | Paul       | McCartney | paul@example.com |
+      | first name | last name | email                   |
+      | Jake       | Douglas   | jake@example.com        |
+      | Fake       | Douglas   | fake@example.com        |
+      | Paul       | McCartney | beatles_fan@example.com |
     And I follow "Subscribers"
-    When I fill in "Last name" with "Douglas" within #search-subscribers
+    When I fill in "query" with "Douglas"
     And I press "Search"
     Then I should see "Jake Douglas"
     And I should see "Fake Douglas"
     But I should not see "Paul McCartney"
-    When I fill in "First name" with "Jake" within #search-subscribers
-    And I fill in "Last name" with "" within #search-subscribers
+    And the "query" field should contain "Douglas"
+    When I fill in "query" with "Jake"
     And I press "Search"
     Then I should see "Jake Douglas"
     But I should not see "Fake Douglas"
-    When I fill in "First name" with "Fake" within #search-subscribers
-    And I fill in "Last name" with "" within #search-subscribers
+    And I should not see "Paul McCartney"
+    When I fill in "query" with "Fake"
     And I press "Search"
-    Then I should not see "Jake Douglas"
-    But I should see "Fake Douglas"
+    Then I should see "Fake Douglas"
+    But I should not see "Jake Douglas"
+    And I should not see "Paul McCartney"
+    When I fill in "query" with "beatles"
+    And I press "Search"
+    Then I should see "Paul McCartney"
+    But I should not see "Fake Douglas"
+    And I should not see "Jake Douglas"

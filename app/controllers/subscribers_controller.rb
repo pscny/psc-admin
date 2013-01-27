@@ -3,13 +3,12 @@ class SubscribersController < ApplicationController
   def index
     @subscriber  = Subscriber.new(params[:subscriber] || {})
     @subscribers = Subscriber.page(params[:page] || 1)
-    if params[:subscriber]
-      query = params[:subscriber].reject{|k,v| v.blank?}
-      # regixify the params
-      @subscribers = @subscribers.where(query)
+    if @query = params[:query]
+      regex = /#{@query}/i
+      @subscribers = @subscribers.or([ { :first_name => regex },
+                                       { :last_name  => regex },
+                                       { :email      => regex } ])
     end
-
-
     @subscribers
   end
 
