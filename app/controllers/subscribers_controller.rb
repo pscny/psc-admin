@@ -2,6 +2,14 @@ class SubscribersController < ApplicationController
 
   def index
     @subscribers = Subscriber.page(params[:page] || 1)
+    if @query = params[:query]
+      regex = /#{@query}/i
+      @subscribers = @subscribers.or([ { :first_name => regex },
+                                       { :last_name  => regex },
+                                       { :email      => regex } ])
+    end
+    flash.alert = 'No Subscribers Found' if @subscribers.none?
+    @subscribers
   end
 
   def show
