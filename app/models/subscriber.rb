@@ -18,18 +18,19 @@ class Subscriber
   field :source
   field :received_at, :type => Date
 
-  validates :first_name, :presence  => true
-  validates :last_name,  :presence  => true
-  validates :email,      :presence  => true, :uniqueness => true
-  validates :source,     :inclusion => { :in => SOURCES }
-  validates :address1,   :presence  => true
-  validates :zip_code,   :presence  => true, :format => { :with => /^\d{5}-?\d{4}?$/, :message => 'should be formatted like ##### or #####-####' }
-  validates :city,       :presence  => true
-  validates :state,      :inclusion => { :in => PscVariables::STATES.values.map{|h|h['abbreviation']} }
-  validates :primary_phone, :presence => true, :format => { :with => /^\d{3}-\d{3}-\d{4}$/, :message => 'please enter a 10 digit phone number (###-###-####)' }
-  validates :secondary_phone, :format => { :with => /^\d{3}-\d{3}-\d{4}$/, :message => 'please enter a 10 digit phone number (###-###-####)' }, :allow_nil => true
+  validates :first_name,      :presence  => true
+  validates :last_name,       :presence  => true
+  validates :email,           :presence  => true, :uniqueness => true, :allow_nil => true
+  validates :source,          :inclusion => { :in => SOURCES }
+  validates :address1,        :presence  => true, :if => 'address2.present?'
+  validates :zip_code,        :presence  => true, :format => { :with => /^\d{5}-?\d{4}?$/, :message => 'should be formatted like ##### or #####-####' }
+  validates :city,            :presence  => true, :allow_nil => true
+  validates :state,           :inclusion => { :in => PscVariables::STATES.values.map{|h|h['abbreviation']}, :allow_nil => true }
+  validates :primary_phone,   :format    => { :with => /^\d{3}-\d{3}-\d{4}$/, :message => 'please enter the phone number in the following format ###-###-####' }, :presence  => true, :allow_nil => true
+  validates :secondary_phone, :format    => { :with => /^\d{3}-\d{3}-\d{4}$/, :message => 'please enter the phone number in the following format ###-###-####' }, :allow_nil => true
 
-  before_validation :format_phone
+  before_validation :format_primary_phone,   :if => 'primary_phone.present?'
+  before_validation :format_secondary_phone, :if => 'secondary_phone.present?'
 
   def full_name
     [first_name, last_name].join(' ')
@@ -37,10 +38,18 @@ class Subscriber
 
   private
 
-  def format_phone
-    self.primary_phone.gsub!(/\D*/,'')
-    self.primary_phone = [ primary_phone.slice(0,3), primary_phone.slice(3,3), primary_phone.slice(6,4) ].join('-')
-    self.secondary_phone.gsub!(/\D*/,'')
-    self.secondary_phone = [ secondary_phone.slice(0,3), secondary_phone.slice(3,3), secondary_phone.slice(6,4) ].join('-')
+  def format_primary_phone
+    format_phone(:primary_phone)
+  end
+
+  def format_secondary_phone
+    format_phone(:secondary_phone)
+  end
+
+  def format_phone(field)
+    phone = send(field)
+    phone = phone.gsub(/\D*/,'')
+    phone = [ phone.slice(0,3), phone.slice(3,3), phone.slice(6,4) ].join('-')
+    send("#{field}=", phone)
   end
 end

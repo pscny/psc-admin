@@ -35,6 +35,51 @@ describe Subscriber, 'validations' do
   it { should validate_format_of(:secondary_phone).to_allow('111-222-3333').not_to_allow('111222333') }
 end
 
+describe Subscriber, 'validations on nil values' do
+  subject { build(:subscriber) }
+
+  it 'allows email to be nil' do
+    subject.email = nil
+    subject.should be_valid
+  end
+
+  it 'allows address1 to be nil' do
+    subject.address1 = nil
+    subject.should be_valid
+  end
+
+  it 'allows address2 to be nil' do
+    subject.address2 = nil
+    subject.should be_valid
+  end
+
+  it 'requires address1 if address2 is not nil' do
+    subject.address1 = nil
+    subject.address2 = 'something'
+    subject.should_not be_valid
+  end
+
+  it 'allows city to be nil' do
+    subject.city = nil
+    subject.should be_valid
+  end
+
+  it 'allows state to be nil' do
+    subject.state = nil
+    subject.should be_valid
+  end
+
+  it 'allows primary phone to be nil' do
+    subject.primary_phone = nil
+    subject.should be_valid
+  end
+
+  it 'allows secondary phone to be nil' do
+    subject.secondary_phone = nil
+    subject.should be_valid
+  end
+end
+
 describe Subscriber, '#name' do
   subject { create(:subscriber, :first_name => 'Tim', :last_name => 'Bell') }
 
