@@ -30,6 +30,9 @@ describe Subscriber, 'validations' do
   it { should validate_presence_of(:zip_code) }
   it { should validate_format_of(:zip_code).to_allow('12345').not_to_allow('1234') }
   it { should validate_format_of(:zip_code).to_allow('12345-4321').not_to_allow('1234-12345') }
+  it { should validate_presence_of(:primary_phone) }
+  it { should validate_format_of(:primary_phone).to_allow('111-222-3333').not_to_allow('111222333') }
+  it { should validate_format_of(:secondary_phone).to_allow('111-222-3333').not_to_allow('111222333') }
 end
 
 describe Subscriber, '#name' do
@@ -37,5 +40,19 @@ describe Subscriber, '#name' do
 
   it 'returns the members full name' do
     subject.full_name.should == 'Tim Bell'
+  end
+end
+
+describe Subscriber, 'before validation' do
+  subject { build(:subscriber, :primary_phone => '111.222/33.33', :secondary_phone => '1112223333') }
+
+  it 'strips formatting' do
+    subject.valid?
+    subject.primary_phone.should   == '111-222-3333'
+    subject.secondary_phone.should == '111-222-3333'
+  end
+
+  it 'strips formatting' do
+    subject.should be_valid
   end
 end

@@ -5,6 +5,8 @@
     <%= f.input :first_name %>
     <%= f.input :last_name %>
     <%= f.input :email %>
+    <%= f.input :primary_phone %>
+    <%= f.input :secondary_phone %>
     <%= f.input :source, :collection => Subscriber::SOURCES.map{ |source| [ source.titleize, source ] }, :prompt => 'Please select a source' %>
     <%= f.input :received_at, :input_html => { 'data-behaviour' => 'datepicker' }, :label => 'Date received' %>
     <%= f.input :address1, :label => 'Address Line One' %>
