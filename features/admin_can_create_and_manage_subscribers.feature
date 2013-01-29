@@ -20,11 +20,14 @@ Feature:
     And I fill in "City" with "Brooklyn"
     And select "New York" from "State"
     And I fill in "Zip Code" with "11201"
+    And I fill in "Primary phone" with "333-555-4444"
+    And I fill in "Secondary phone" with "333-555-2222"
     And I press "Create Subscriber"
     Then I should see "James Zevin was successfully created."
     And I should see "James Zevin" within the element for subscriber "james.zevin@example.com"
     And I should see "james.zevin@example.com" within the element for subscriber "james.zevin@example.com"
 
+  @thisone
   Scenario: Admin edits and existing subscriber
     Given the following subscriber exists:
       | first name | last name | email            |
@@ -32,6 +35,8 @@ Feature:
     When I follow "Subscribers"
     And I follow "Jake Douglas"
     Then I should see "Editing Jake Douglas"
+    And the "Primary phone" field should contain "\d{3}-\d{3}-\d{4}"
+    And the "Secondary phone" field should contain "\d{3}-\d{3}-\d{4}"
     When I fill in "Last name" with "Phillips"
     And I press "Update Subscriber"
     Then I should see "Jake Phillips" within the element for subscriber "jake@example.com"
