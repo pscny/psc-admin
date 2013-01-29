@@ -40,5 +40,7 @@ class Subscriber
   def format_phone
     self.primary_phone.gsub!(/\D*/,'')
     self.primary_phone = [ primary_phone.slice(0,3), primary_phone.slice(3,3), primary_phone.slice(6,4) ].join('-')
+    self.secondary_phone.gsub!(/\D*/,'')
+    self.secondary_phone = [ secondary_phone.slice(0,3), secondary_phone.slice(3,3), secondary_phone.slice(6,4) ].join('-')
   end
 end
