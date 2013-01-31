@@ -23,7 +23,7 @@ describe Subscriber, 'validations' do
   it { should validate_presence_of(:last_name) }
   it { should validate_presence_of(:email) }
   it { should validate_uniqueness_of(:email) }
-  it { should validate_inclusion_of(:source).to_allow(%w{ brochure concert online order renewal }) }
+  it { should validate_inclusion_of(:source).to_allow(%w{ brochure concert online renewal }) }
   it { should validate_presence_of(:address1) }
   it { should validate_presence_of(:city) }
   it { should validate_inclusion_of(:state).to_allow(PscVariables::STATES.values.map{|h|h['abbreviation']}) }
