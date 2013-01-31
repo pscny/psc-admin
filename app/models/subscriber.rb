@@ -2,7 +2,7 @@ class Subscriber
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  SOURCES = %w{ brochure concert online order renewal }
+  SOURCES = %w{ brochure concert online renewal }
 
   field :first_name
   field :last_name
