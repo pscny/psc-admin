@@ -4,10 +4,26 @@
   <div class='form-inputs'>
     <%= f.input :first_name %>
     <%= f.input :last_name %>
-    <%= f.input :email %>
-    <%= f.input :primary_phone %>
-    <%= f.input :secondary_phone %>
-    <%= f.input :source, :collection => Subscriber::SOURCES.map{ |source| [ source.titleize, source ] }, :prompt => 'Please select a source' %>
+    <%= f.input :email, :wrapper => :prepend do %>
+      <span class='add-on'>@</span>
+      <%= f.input_field :email %>
+    <% end -%>
+    <%= f.input :primary_phone, :wrapper => :prepend do %>
+      <span class='add-on'><i class='icon-mobile-phone'></i></span>
+      <%= f.input_field :primary_phone %>
+    <% end -%>
+    <%= f.input :secondary_phone , :wrapper => :prepend do %>
+      <span class='add-on'><i class='icon-mobile-phone'></i></span>
+      <%= f.input_field :secondary_phone  %>
+    <% end -%>
+
+    <% collection = Subscriber::SOURCES.map{ |source| [ source.titleize, source ] } %>
+    <%= f.input :source, :prompt => 'Please select a source', :wrapper => :prepend do %>
+      <span class='add-on'><i class='icon-shopping-cart'></i></span>
+      <%= f.input_field :source, :collection => collection %>
+    <% end -%>
+
+
     <%= f.input :received_at, :input_html => { 'data-behaviour' => 'datepicker' }, :label => 'Date received' %>
     <%= f.input :address1, :label => 'Address Line One' %>
     <%= f.input :address2, :label => 'Address Line Two' %>

@@ -23,6 +23,7 @@ group :assets do
   gem 'therubyracer', :platforms => :ruby
   gem 'libv8', '~> 3.11.8'
   gem 'twitter-bootstrap-rails'
+  gem 'font_awesome', '~> 3.0'
 end
 
 group :test do
