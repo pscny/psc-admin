@@ -12,4 +12,13 @@ Feature:
     And I follow "New Concert series"
     And I fill in "Name" with "Beehtoven"
     And I press "Create Concert series"
-    Then I should see "Concert series was successfully created."
+    Then I should see "The Beehtoven Concert Series was successfully created."
+
+  @thisone
+  Scenario: Admin can edit a concert series
+    Given the following concert series exists:
+      | name |
+      | Fux  |
+    When I follow "Concert Series"
+    And I follow "Fux"
+    Then I should see "Editing Fux"

@@ -2,15 +2,15 @@
 
 <table>
   <tr>
-    <th></th>
+    <th>Name</th>
     <th></th>
     <th></th>
   </tr>
 
 <% @concert_series.each do |concert_series| %>
   <tr>
+    <td><%= link_to concert_series.name, edit_concert_series_path(concert_series) %></td>
     <td><%= link_to 'Show', concert_series %></td>
-    <td><%= link_to 'Edit', edit_concert_series_path(concert_series) %></td>
     <td><%= link_to 'Destroy', concert_series, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
