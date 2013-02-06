@@ -5,6 +5,8 @@ module HtmlSelectorsHelpers
     case locator
     when /(.+) within (.+)/
       "#{selector_for($2)} #{selector_for($1)}"
+    when /^the page$/
+      "html > body"
     when /^the element for (.+) "(.+)"$/
       '#' + element_id(send("fetch_#{$1}", $2))
     when /^the link "([^"]+)"$/
@@ -15,15 +17,10 @@ module HtmlSelectorsHelpers
       $1
     when /^"(.+)"$/
       $1
-
-    when /^the page$/         then 'html > body'
-    when /^the signin link$/  then 'a#signin'
-    when /^the signout link$/ then 'a#signout'
-
     else
-      puts '*'*80
+      puts "*"*80
       puts "Named element: '#{locator}' was not found"
-      puts '*'*80
+      puts "*"*80
       locator
     end
   end
