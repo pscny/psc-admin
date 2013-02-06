@@ -2,16 +2,26 @@
   <%= f.error_notification %>
 
   <div class='form-inputs'>
-    <%= f.input :first_name %>
-    <%= f.input :last_name %>
+    <%= f.input :first_name, :wrapper => :prepend do %>
+      <span class='add-on'>F</span>
+      <%= f.input_field :first_name %>
+    <% end -%>
+
+    <%= f.input :last_name, :wrapper => :prepend do %>
+      <span class='add-on'>L</span>
+      <%= f.input_field :last_name %>
+    <% end -%>
+
     <%= f.input :email, :wrapper => :prepend do %>
       <span class='add-on'>@</span>
       <%= f.input_field :email %>
     <% end -%>
+
     <%= f.input :primary_phone, :wrapper => :prepend do %>
       <span class='add-on'><i class='icon-mobile-phone'></i></span>
       <%= f.input_field :primary_phone %>
     <% end -%>
+
     <%= f.input :secondary_phone , :wrapper => :prepend do %>
       <span class='add-on'><i class='icon-mobile-phone'></i></span>
       <%= f.input_field :secondary_phone  %>
@@ -23,13 +33,36 @@
       <%= f.input_field :source, :collection => collection %>
     <% end -%>
 
+    <%= f.input :received_at, :wrapper => :prepend, :label => 'Date received' do %>
+      <span class='add-on'><i class='icon-calendar'></i></span>
+      <%= f.input_field :received_at, 'data-behaviour' => 'datepicker' %>
+    <% end -%>
 
-    <%= f.input :received_at, :input_html => { 'data-behaviour' => 'datepicker' }, :label => 'Date received' %>
-    <%= f.input :address1, :label => 'Address Line One' %>
-    <%= f.input :address2, :label => 'Address Line Two' %>
-    <%= f.input :city %>
-    <%= f.input :state, :collection => PscVariables::STATES.values.map {|state| [ state['name'], state['abbreviation'] ] }, :prompt => 'Please select a state' %>
-    <%= f.input :zip_code, :label => 'Zip Code' %>
+    <%= f.input :address1, :wrapper => :prepend, :label => 'Address Line One' do %>
+      <span class='add-on'>1</span>
+      <%= f.input_field :address1 %>
+    <% end -%>
+
+    <%= f.input :address2, :wrapper => :prepend, :label => 'Address Line Two' do %>
+      <span class='add-on'>2</span>
+      <%= f.input_field :address2 %>
+    <% end -%>
+
+    <%= f.input :city, :wrapper => :prepend do %>
+      <span class='add-on'>C</span>
+      <%= f.input_field :city %>
+    <% end -%>
+
+    <% collection = PscVariables::STATES.values.map {|state| [ state['name'], state['abbreviation'] ] } %>
+    <%= f.input :state, :prompt => 'Please select a state', :wrapper => :prepend do %>
+      <span class='add-on'>S</i></span>
+      <%= f.input_field :state, :collection => collection %>
+    <% end -%>
+
+    <%= f.input :zip_code, :wrapper => :prepend, :label => 'Zip Code' do %>
+      <span class='add-on'>Z</span>
+      <%= f.input_field :zip_code %>
+    <% end -%>
   </div>
 
   <div class='form-actions'>

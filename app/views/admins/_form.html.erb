@@ -2,9 +2,21 @@
   <%= f.error_notification %>
 
   <div class='form-inputs'>
-    <%= f.input :name %>
-    <%= f.input :email %>
-    <%= f.input :password %>
+    <%= f.input :name, :wrapper => :prepend do %>
+      <span class='add-on'><i class='icon-user'></i></span>
+      <%= f.input_field :name %>
+    <% end -%>
+
+    <%= f.input :email, :wrapper => :prepend do %>
+      <span class='add-on'>@</span>
+      <%= f.input_field :email %>
+    <% end -%>
+
+    <%= f.input :password, :wrapper => :prepend do %>
+      <span class='add-on'> &middot; </span>
+      <%= f.input_field :password %>
+    <% end -%>
+
   </div>
 
   <div class='form-actions'>
