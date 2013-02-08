@@ -62,13 +62,13 @@
                 </li>
                 <li>
                   <%= link_to destroy_admin_session_path, :method => :delete, :id =>'signout' do -%>
-                    Logout <i class='icon-signout'></i>
+                    Logout <%= icon(:signout) %>
                   <% end -%>
                 </li>
               <% else -%>
                 <li>
                   <%= link_to new_admin_session_path, :id => 'signin' do -%>
-                    Login <i class='icon-signin'></i>
+                    Login <%= icon(:signin) %>
                   <% end -%>
                 </li>
               <% end -%>
