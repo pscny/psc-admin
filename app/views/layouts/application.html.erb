@@ -60,9 +60,17 @@
                     <%= current_admin.name -%>
                   </p>
                 </li>
-                <li><%= link_to 'Logout', destroy_admin_session_path, :method => :delete -%></li>
+                <li>
+                  <%= link_to destroy_admin_session_path, :method => :delete, :id =>'signout' do -%>
+                    Logout <%= icon(:signout) %>
+                  <% end -%>
+                </li>
               <% else -%>
-                <li><%= link_to 'Login', new_admin_session_path -%></li>
+                <li>
+                  <%= link_to new_admin_session_path, :id => 'signin' do -%>
+                    Login <%= icon(:signin) %>
+                  <% end -%>
+                </li>
               <% end -%>
             </ul>
           </div><!--/.nav-collapse -->
