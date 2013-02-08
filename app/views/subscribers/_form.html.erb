@@ -18,31 +18,23 @@
     <% end -%>
 
     <%= f.input :primary_phone, :wrapper => :prepend do %>
-      <%= content_tag(:span, :class => 'add-on') do %>
-        <i class='icon-mobile-phone'></i>
-      <% end %>
+      <%= content_tag(:span, icon(:mobile_phone), :class => 'add-on') %>
       <%= f.input_field :primary_phone %>
     <% end -%>
 
     <%= f.input :secondary_phone , :wrapper => :prepend do %>
-      <%= content_tag(:span, :class => 'add-on') do %>
-        <i class='icon-mobile-phone'></i>
-      <% end %>
+      <%= content_tag(:span, icon(:mobile_phone), :class => 'add-on') %>
       <%= f.input_field :secondary_phone  %>
     <% end -%>
 
     <% collection = Subscriber::SOURCES.map{ |source| [ source.titleize, source ] } %>
     <%= f.input :source, :prompt => 'Please select a source', :wrapper => :prepend do %>
-      <%= content_tag(:span, :class => 'add-on') do %>
-        <i class='icon-shopping-cart'></i>
-      <% end %>
+      <%= content_tag(:span, icon(:shopping_cart), :class => 'add-on') %>
       <%= f.input_field :source, :collection => collection %>
     <% end -%>
 
     <%= f.input :received_at, :wrapper => :prepend, :label => 'Date received' do %>
-      <%= content_tag(:span, :class => 'add-on') do %>
-        <i class='icon-calendar'></i>
-      <% end %>
+      <%= content_tag(:span, icon(:calendar), :class => 'add-on') %>
       <%= f.input_field :received_at, 'data-behaviour' => 'datepicker' %>
     <% end -%>
 
@@ -75,5 +67,5 @@
 
   <div class='form-actions'>
     <%= f.button :submit %>
-  </div> 
+  </div>
 <% end %>
