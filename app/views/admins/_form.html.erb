@@ -3,17 +3,21 @@
 
   <div class='form-inputs'>
     <%= f.input :name, :wrapper => :prepend do %>
-      <span class='add-on'><i class='icon-user'></i></span>
+      <%= content_tag(:span, :class => 'add-on') do %>
+        <i class='icon-user'></i>
+      <% end %>
       <%= f.input_field :name %>
     <% end -%>
 
     <%= f.input :email, :wrapper => :prepend do %>
-      <span class='add-on'>@</span>
+      <%= content_tag(:span, '@', :class => 'add-on') %>
       <%= f.input_field :email %>
     <% end -%>
 
     <%= f.input :password, :wrapper => :prepend do %>
-      <span class='add-on'><i class='icon-key'></i></span>
+      <%= content_tag(:span, :class => 'add-on') do %>
+        <i class='icon-key'></i>
+      <% end %>
       <%= f.input_field :password %>
     <% end -%>
 
