@@ -1,0 +1,19 @@
+<%= simple_form_for(@concert) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :name, :wrapper => :prepend do %>
+      <%= content_tag(:span, 'N', :class => 'add-on') %>
+      <%= f.input_field :name %>
+    <% end -%>
+
+    <%= f.input :date, :wrapper => :prepend, :label => 'Event Date' do %>
+      <%= content_tag(:span, icon(:calendar), :class => 'add-on') %>
+      <%= f.input_field :date, 'data-behaviour' => 'datepicker' %>
+    <% end -%>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

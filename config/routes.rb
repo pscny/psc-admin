@@ -3,6 +3,7 @@ PscAdmin::Application.routes.draw do
 
   resources :admins
   resources :subscribers
+  resources :concerts
 
   root :to => 'subscribers#index'
 end
