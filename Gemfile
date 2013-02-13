@@ -8,7 +8,7 @@ gem 'devise'
 gem 'jquery-rails'
 gem 'kaminari-bootstrap'
 gem 'mongoid', '~> 3.0'
-gem 'rails', '3.2.10'
+gem 'rails', '~> 3'
 gem 'simple_form'
 gem 'thin'
 
