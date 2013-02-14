@@ -14,11 +14,29 @@ Feature:
     And I press "Create Concert series"
     Then I should see "The Beehtoven Concert Series was successfully created."
 
-  @thisone
   Scenario: Admin can edit a concert series
     Given the following concert series exists:
       | name |
-      | Fux  |
+      | Fox  |
     When I follow "Concert Series"
-    And I follow "Fux"
-    Then I should see "Editing Fux"
+    Then I should see "Fox"
+    When I follow "Fox"
+    Then I should see "Editing Fox"
+    When I fill in "Name" with "Cat"
+    And I press "Update Concert series"
+    Then I should see "Cat"
+    Then I should see "The Cat Concert Series was successfully updated."
+    But I should not see "Fox"
+
+  Scenario: Admin can delete a concert series
+    Given the following concert series exists:
+      | name  |
+      | Fox   |
+      | Hound |
+    When I follow "Concert Series"
+    Then I should see "Hound"
+    And I should see "Fox"
+    When I follow "Hound"
+    And I follow "Destroy"
+    Then I should not see "Hound"
+    But I should see "Fox"

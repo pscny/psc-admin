@@ -2,5 +2,8 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @concert_series %> |
-<%= link_to 'Back', concert_series_index_path %>
+<% content_for :actions do -%>
+  <li><%= link_to 'Show', @concert_series %> </li>
+  <li><%= link_to 'Back', concert_series_index_path %></li>
+  <li><%= link_to 'Destroy', @concert_series, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+<% end -%>

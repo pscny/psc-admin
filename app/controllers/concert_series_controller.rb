@@ -31,7 +31,8 @@ class ConcertSeriesController < ApplicationController
     @concert_series = ConcertSeries.find(params[:id])
 
     if @concert_series.update_attributes(params[:concert_series])
-      redirect_to @concert_series, notice: 'Concert series was successfully updated.'
+      flash.keep.notice = "The #{@concert_series.name} Concert Series was successfully updated."
+      redirect_to :action => :index
     else
       render action: "edit"
     end
