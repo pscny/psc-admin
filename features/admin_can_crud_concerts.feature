@@ -26,3 +26,16 @@ Feature:
     And I press "Update Concert"
     Then I should see "Morgenstern Trio was successfully updated."
     And I should see "Morgenstern Trio"
+
+  Scenario: Admin can delete concerts
+    Given the following concert exists:
+      | name          | date      |
+      | Fancy Violins | 2010/6/19 |
+      | Ugly Violins  | 2010/7/19 |
+    When I follow "Concerts"
+    Then I should see "Fancy Violins"
+    And I should see "Ugly Violins"
+    When I follow "Fancy Violins"
+    And I follow "Destroy"
+    Then I should not see "Fancy Violins"
+    But I should see "Ugly Violins"

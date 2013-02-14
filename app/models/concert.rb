@@ -2,6 +2,8 @@ class Concert
   include Mongoid::Document
   include Mongoid::Timestamps
 
+  default_scope desc(:date)
+
   field :name
   field :date, :type => Date
 
