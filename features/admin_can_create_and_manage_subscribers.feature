@@ -27,7 +27,6 @@ Feature:
     And I should see "James Zevin" within the element for subscriber "james.zevin@example.com"
     And I should see "james.zevin@example.com" within the element for subscriber "james.zevin@example.com"
 
-  @thisone
   Scenario: Admin edits and existing subscriber
     Given the following subscriber exists:
       | first name | last name | email            |
