@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Subscriber do
   it { should be_a(Mongoid::Document) }
-  it { be_timestamped_document }
+  it { should be_timestamped_document }
 
   it { should have_field(:first_name) }
   it { should have_field(:last_name) }
