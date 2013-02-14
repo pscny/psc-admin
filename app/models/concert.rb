@@ -4,4 +4,7 @@ class Concert
 
   field :name
   field :date, :type => Date
+
+  validates :name, :presence => true
+  validates :date, :presence => true, :uniqueness => true
 end

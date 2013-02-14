@@ -1,21 +1,19 @@
 <h1>Listing concerts</h1>
 
-<table>
+<table class='table table-hover table-striped'>
   <tr>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th> Name </th>
+    <th> Date </th>
   </tr>
 
 <% @concerts.each do |concert| %>
   <tr>
-    <td><%= link_to 'Show', concert %></td>
-    <td><%= link_to 'Edit', edit_concert_path(concert) %></td>
-    <td><%= link_to 'Destroy', concert, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
+    <td><%= link_to concert.name, edit_concert_path(concert) %></td>
+    <td><%= concert.date %></td>
   </tr>
 <% end %>
 </table>
 
-<br />
-
-<%= link_to 'New Concert', new_concert_path %>
+<% content_for :actions do -%>
+  <li><%= link_to 'New Concert', new_concert_path %></li>
+<% end %>

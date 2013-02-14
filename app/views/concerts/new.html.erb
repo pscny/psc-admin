@@ -1,5 +1,7 @@
 <h1>New concert</h1>
 
-<%= render 'form' %>
+<%= render 'form', :concert => @concert %>
 
-<%= link_to 'Back', concerts_path %>
+<% content_for :actions do -%>
+  <li><%= link_to 'Back', concerts_path %></li>
+<% end -%>

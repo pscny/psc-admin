@@ -19,7 +19,8 @@ class ConcertsController < ApplicationController
     @concert = Concert.new(params[:concert])
 
     if @concert.save
-      redirect_to @concert, notice: 'Concert was successfully created.'
+      flash.keep.notice = "#{@concert.name} was successfully created."
+      redirect_to :action => :index
     else
       render action: "new"
     end
@@ -29,7 +30,8 @@ class ConcertsController < ApplicationController
     @concert = Concert.find(params[:id])
 
     if @concert.update_attributes(params[:concert])
-      redirect_to @concert, notice: 'Concert was successfully updated.'
+      flash.keep.notice = "#{@concert.name} was successfully updated."
+      redirect_to @concert
     else
       render action: "edit"
     end
