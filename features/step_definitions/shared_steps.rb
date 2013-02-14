@@ -13,3 +13,9 @@ end
 Given /^I am logged in as:$/ do |table|
   login(FactoryGirl.create(:admin, table.hashes.first))
 end
+
+And /^then I debug$/ do
+  require 'ruby-debug'
+  debugger
+  puts 1
+end

@@ -2,19 +2,70 @@
   <%= f.error_notification %>
 
   <div class='form-inputs'>
-    <%= f.input :first_name %>
-    <%= f.input :last_name %>
-    <%= f.input :email %>
-    <%= f.input :source, :collection => Subscriber::SOURCES.map{ |source| [ source.titleize, source ] }, :prompt => 'Please select a source' %>
-    <%= f.input :received_at, :input_html => { 'data-behaviour' => 'datepicker' }, :label => 'Date received' %>
-    <%= f.input :address1, :label => 'Address Line One' %>
-    <%= f.input :address2, :label => 'Address Line Two' %>
-    <%= f.input :city %>
-    <%= f.input :state, :collection => PscVariables::STATES.values.map {|state| [ state['name'], state['abbreviation'] ] }, :prompt => 'Please select a state' %>
-    <%= f.input :zip_code, :label => 'Zip Code' %>
+    <%= f.input :first_name, :wrapper => :prepend do %>
+      <%= content_tag(:span, 'F', :class => 'add-on') %>
+      <%= f.input_field :first_name %>
+    <% end -%>
+
+    <%= f.input :last_name, :wrapper => :prepend do %>
+      <%= content_tag(:span, 'L', :class => 'add-on') %>
+      <%= f.input_field :last_name %>
+    <% end -%>
+
+    <%= f.input :email, :wrapper => :prepend do %>
+      <%= content_tag(:span, '@', :class => 'add-on') %>
+      <%= f.input_field :email %>
+    <% end -%>
+
+    <%= f.input :primary_phone, :wrapper => :prepend do %>
+      <%= content_tag(:span, icon(:mobile_phone), :class => 'add-on') %>
+      <%= f.input_field :primary_phone %>
+    <% end -%>
+
+    <%= f.input :secondary_phone , :wrapper => :prepend do %>
+      <%= content_tag(:span, icon(:mobile_phone), :class => 'add-on') %>
+      <%= f.input_field :secondary_phone  %>
+    <% end -%>
+
+    <% collection = Subscriber::SOURCES.map{ |source| [ source.titleize, source ] } %>
+    <%= f.input :source, :prompt => 'Please select a source', :wrapper => :prepend do %>
+      <%= content_tag(:span, icon(:shopping_cart), :class => 'add-on') %>
+      <%= f.input_field :source, :collection => collection %>
+    <% end -%>
+
+    <%= f.input :received_at, :wrapper => :prepend, :label => 'Date received' do %>
+      <%= content_tag(:span, icon(:calendar), :class => 'add-on') %>
+      <%= f.input_field :received_at, 'data-behaviour' => 'datepicker' %>
+    <% end -%>
+
+    <%= f.input :address1, :wrapper => :prepend, :label => 'Address Line One' do %>
+      <%= content_tag(:span, 1, :class => 'add-on') %>
+      <%= f.input_field :address1 %>
+    <% end -%>
+
+    <%= f.input :address2, :wrapper => :prepend, :label => 'Address Line Two' do %>
+      <%= content_tag(:span, 2, :class => 'add-on') %>
+      <%= f.input_field :address2 %>
+    <% end -%>
+
+    <%= f.input :city, :wrapper => :prepend do %>
+      <%= content_tag(:span, 'C', :class => 'add-on') %>
+      <%= f.input_field :city %>
+    <% end -%>
+
+    <% collection = PscVariables::STATES.values.map {|state| [ state['name'], state['abbreviation'] ] } %>
+    <%= f.input :state, :prompt => 'Please select a state', :wrapper => :prepend do %>
+      <%= content_tag(:span, 'S', :class => 'add-on') %>
+      <%= f.input_field :state, :collection => collection %>
+    <% end -%>
+
+    <%= f.input :zip_code, :wrapper => :prepend, :label => 'Zip Code' do %>
+      <%= content_tag(:span, 'Z', :class => 'add-on') %>
+      <%= f.input_field :zip_code %>
+    <% end -%>
   </div>
 
   <div class='form-actions'>
     <%= f.button :submit %>
-  </div> 
+  </div>
 <% end %>

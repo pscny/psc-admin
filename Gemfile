@@ -8,7 +8,7 @@ gem 'devise'
 gem 'jquery-rails'
 gem 'kaminari-bootstrap'
 gem 'mongoid', '~> 3.0'
-gem 'rails', '3.2.10'
+gem 'rails', '~> 3'
 gem 'simple_form'
 gem 'thin'
 
@@ -23,6 +23,7 @@ group :assets do
   gem 'therubyracer', :platforms => :ruby
   gem 'libv8', '~> 3.11.8'
   gem 'twitter-bootstrap-rails'
+  gem 'font_awesome', '~> 3.0'
 end
 
 group :test do
