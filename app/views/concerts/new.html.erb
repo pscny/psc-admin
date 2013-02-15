@@ -1,0 +1,7 @@
+<h1>New concert</h1>
+
+<%= render 'form', :concert => @concert %>
+
+<% content_for :actions do -%>
+  <li><%= link_to 'Back', concerts_path %></li>
+<% end -%>
