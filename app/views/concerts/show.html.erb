@@ -1,0 +1,6 @@
+<p id="notice"><%= notice %></p>
+
+<% content_for :actions do -%>
+  <li><%= link_to 'Edit', edit_concert_path(@concert) %></li>
+  <li><%= link_to 'Back', concerts_path %></li>
+<% end %>
