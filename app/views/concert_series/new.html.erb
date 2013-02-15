@@ -1,0 +1,7 @@
+<h1>New Concert Series</h1>
+
+<%= render 'form', :concert_series => @concert_series %>
+
+<% content_for :actions do -%>
+  <li><%= link_to 'Back', concert_series_index_path %></li>
+<% end -%>

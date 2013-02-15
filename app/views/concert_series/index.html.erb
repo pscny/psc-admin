@@ -1,0 +1,17 @@
+<h1>Concert Series</h1>
+
+<table class='table table-hover table-striped'>
+  <tr>
+    <th>Name</th>
+  </tr>
+
+<% @concert_series.each do |concert_series| %>
+  <tr>
+    <td><%= link_to concert_series.name, edit_concert_series_path(concert_series) %></td>
+  </tr>
+<% end %>
+</table>
+
+<% content_for :actions do -%>
+  <li><%= link_to 'New Concert series', new_concert_series_path %></li>
+<% end -%>

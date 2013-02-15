@@ -40,7 +40,7 @@ class SubscribersController < ApplicationController
 
     if @subscriber.update_attributes(params[:subscriber])
       flash.keep.notice = "Successfully updated #{@subscriber.full_name}"
-      redirect_to action: :index, notice: 'Subscriber was successfully updated.'
+      redirect_to action: :index
     else
       render action: 'edit'
     end
