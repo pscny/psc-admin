@@ -1,9 +1,9 @@
 <h1>Editing <%= @concert_series.name %></h1>
 
-<%= render 'form' %>
+<%= render 'form', :concert_series => @concert_series %>
 
 <% content_for :actions do -%>
   <li><%= link_to 'Show', @concert_series %> </li>
   <li><%= link_to 'Back', concert_series_index_path %></li>
-  <li><%= link_to 'Destroy', @concert_series, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+  <li><%= link_to 'Destroy', @concert_series, :method => :delete, :data => { :confirm => 'Are you sure?' } %></li>
 <% end -%>

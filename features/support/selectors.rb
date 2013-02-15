@@ -13,6 +13,10 @@ module HtmlSelectorsHelpers
       "a:contains('#{$1}')"
     when /^a link with the text "([^"]+)"$/
       "a:contains('#{$1}')"
+    when /^a link to the (.+) "([^"]+)"$/
+      model, param = $1, $2
+      doc = __send__("fetch_#{model.downcase.gsub(' ','_')}", param)
+      "a[href*='#{polymorphic_path(doc)}']"
     when /^the "(.+)" field$/
       $1
     when /^"(.+)"$/

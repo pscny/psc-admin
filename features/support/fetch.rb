@@ -7,6 +7,10 @@ module FetchHelpers
     fetch Subscriber, :email => email
   end
 
+  def fetch_concert_series(name)
+    fetch ConcertSeries, :name => name
+  end
+
   private
 
   def fetch(klass, where_opts)

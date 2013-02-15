@@ -13,6 +13,7 @@ Feature:
     And I fill in "Name" with "Beehtoven"
     And I press "Create Concert series"
     Then I should see "The Beehtoven Concert Series was successfully created."
+    And I should see a link to the concert series "Beehtoven"
 
   Scenario: Admin can edit a concert series
     Given the following concert series exists:

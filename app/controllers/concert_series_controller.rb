@@ -21,7 +21,7 @@ class ConcertSeriesController < ApplicationController
 
     if @concert_series.save
       flash.keep.notice = "The #{@concert_series.name} Concert Series was successfully created."
-      redirect_to @concert_series
+      redirect_to :action => :index
     else
       render action: :new
     end
