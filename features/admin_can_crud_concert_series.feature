@@ -11,6 +11,7 @@ Feature:
     When I follow "Concert Series"
     And I follow "New Concert series"
     And I fill in "Name" with "Beehtoven"
+    And select "2012 - 2013 (113th)" from "Season"
     And I press "Create Concert series"
     Then I should see "The Beehtoven Concert Series was successfully created."
     And I should see a link to the concert series "Beehtoven"
