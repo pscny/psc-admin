@@ -23,6 +23,10 @@ namespace :psc do
         FactoryGirl.create(:subscriber)
       end
 
+      (113..120).to_a.each do |season|
+        FactoryGirl.create(:season, :season => season)
+      end
+
       print "done.\n"
     end
   end
