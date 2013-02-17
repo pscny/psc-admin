@@ -7,10 +7,10 @@
       <%= f.input_field :name %>
     <% end -%>
 
-    <% collection = Subscriber::SOURCES.map{ |source| [ source.titleize, source ] } %>
-    <%= f.input :source, :prompt => 'Please select a source', :wrapper => :prepend do %>
-      <%= content_tag(:span, icon(:shopping_cart), :class => 'add-on') %>
-      <%= f.input_field :source, :collection => collection %>
+    <% collection = Season.all.map{ |season| [ season.to_s, season.id ] } %>
+    <%= f.input :season_id, :prompt => 'Please select a season', :wrapper => :prepend do %>
+      <%= content_tag(:span, icon(:calendar), :class => 'add-on') %>
+      <%= f.input_field :season_id, :collection => collection %>
     <% end -%>
   </div>
 

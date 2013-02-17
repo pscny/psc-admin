@@ -2,6 +2,9 @@ class ConcertSeries
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  field :name
+  belongs_to :season
+  validates_associated :season
+  validates :season_id, :presence => true
 
+  field :name
 end
