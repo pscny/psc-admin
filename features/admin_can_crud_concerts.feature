@@ -7,11 +7,16 @@ Feature:
     Given I am logged in
     And I go to the homepage
 
+  @thisone
   Scenario: admins can create concerts
+    Given the following concert series exists:
+      | name      |
+      | Hick Hits |
     When I follow "Concerts"
     And I follow "New Concert"
     And I fill in "Name" with "Morgenstern Trio"
     And I fill in "Event Date" with "2012/6/19"
+    And I select "Hick Hits" from "Concert series"
     And I press "Create Concert"
     Then I should see "Morgenstern Trio was successfully created."
 

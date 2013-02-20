@@ -2,6 +2,7 @@ class ConcertSeries
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  field :name
+  has_many :concerts
 
+  field :name
 end
