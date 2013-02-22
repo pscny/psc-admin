@@ -7,7 +7,6 @@ Feature:
     Given I am logged in
     And I go to the homepage
 
-  @thisone
   Scenario: admins can create concerts
     Given the following concert series exists:
       | name      |
