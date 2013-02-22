@@ -19,13 +19,15 @@ Feature:
     And I press "Create Concert"
     Then I should see "Morgenstern Trio was successfully created."
 
+  @thisone
   Scenario: admins can edit concerts
     Given the following concert exists:
-      | name          | date      |
-      | Fancy Violins | 2010/6/19 |
+      | name          | date      | concert series  |
+      | Fancy Violins | 2010/6/19 | name: Hick Hits |
     When I follow "Concerts"
     And I follow "Fancy Violins"
-    And I fill in "Name" with "Morgenstern Trio"
+    Then "Hick Hits" should be selected in from "Concert series"
+    When I fill in "Name" with "Morgenstern Trio"
     And I fill in "Event Date" with "2012/6/19"
     And I press "Update Concert"
     Then I should see "Morgenstern Trio was successfully updated."
