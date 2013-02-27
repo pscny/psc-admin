@@ -4,6 +4,8 @@ class Concert
 
   default_scope desc(:date)
 
+  belongs_to :concert_series
+
   field :name
   field :date, :type => Date
 
