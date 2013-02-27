@@ -21,17 +21,24 @@ Feature:
 
   @thisone
   Scenario: admins can edit concerts
-    Given the following concert exists:
-      | name          | date      | concert series  |
-      | Fancy Violins | 2010/6/19 | name: Hick Hits |
+    Given the following concert series exists:
+      | name      |
+      | Sick Hits |
+      | Hick Hits |
     When I follow "Concerts"
-    And I follow "Fancy Violins"
+    And I follow "New Concert"
+    And I fill in "Name" with "Morgenstern Trio"
+    And I fill in "Event Date" with "2012/6/19"
+    And I select "Hick Hits" from "Concert series"
+    And I press "Create Concert"
+    Then I should see "Morgenstern Trio was successfully created."
+    And I follow "Morgenstern Trio"
     Then "Hick Hits" should be selected in from "Concert series"
-    When I fill in "Name" with "Morgenstern Trio"
+    When I fill in "Name" with "Fancy Voilins"
     And I fill in "Event Date" with "2012/6/19"
     And I press "Update Concert"
-    Then I should see "Morgenstern Trio was successfully updated."
-    And I should see "Morgenstern Trio"
+    Then I should see "Fancy Voilins was successfully updated."
+    And I should see "Fancy Voilins"
 
   Scenario: Admin can delete concerts
     Given the following concert exists:

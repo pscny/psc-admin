@@ -13,9 +13,9 @@
     <% end -%>
 
     <% collection = ConcertSeries.all.map{ |series| [ series.name, series.id ] } %>
-    <%= f.input :concert_series, :prompt => 'Please select a Concert Series', :wrapper => :prepend do %>
+    <%= f.input :concert_series_id, :prompt => 'Please select a Concert Series', :wrapper => :prepend do %>
       <%= content_tag(:span, icon(:music), :class => 'add-on') %>
-      <%= f.input_field :concert_series, :collection => collection %>
+      <%= f.input_field :concert_series_id, :collection => collection %>
     <% end -%>
 
   </div>

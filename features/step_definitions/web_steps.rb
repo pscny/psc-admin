@@ -213,3 +213,8 @@ end
 Then /^show me the page$/ do
   save_and_open_page
 end
+
+Then /^"(.*?)" should be selected in from "(.*?)"$/ do |value, field_name|
+  field_value  = find_field(field_name).value
+  has_select?(field_name, :selected => value)
+end
