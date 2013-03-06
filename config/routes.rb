@@ -1,5 +1,5 @@
 PscAdmin::Application.routes.draw do
-  devise_for :admins
+  match 'auth/:provider/callback', :controller => :tests, :action => :index
 
   resources :admins
   resources :subscribers

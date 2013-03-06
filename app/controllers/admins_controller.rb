@@ -1,6 +1,7 @@
 class AdminsController < ApplicationController
 
   def index
+    debugger
     @admins = Admin.all
   end
 
