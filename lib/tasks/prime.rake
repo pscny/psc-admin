@@ -16,11 +16,8 @@ namespace :psc do
 
       print "Creating development data..."
 
-      FactoryGirl.create(:admin, :email    => 'admin@example.com',
-                                 :password => 'test')
-
       30.times do
-        FactoryGirl.create(:subscriber)
+        FactoryGirl.create(:members)
       end
 
       print "done.\n"
