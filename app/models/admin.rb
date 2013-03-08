@@ -44,4 +44,8 @@ class Admin
 
   field :name
 
+  def self.find_or_create_from_auth_hash(auth_hash)
+    find_from_auth_hash(auth_hash) || create_from_auth_hash(auth_hash)
+  end
+
 end
