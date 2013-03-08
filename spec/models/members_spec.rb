@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Subscriber do
+describe Member do
   it { should be_a(Mongoid::Document) }
   it { should be_timestamped_document }
 
@@ -18,7 +18,7 @@ describe Subscriber do
   it { should have_field(:received_at).of_type(Date) }
 end
 
-describe Subscriber, 'validations' do
+describe Member, 'validations' do
   it { should validate_presence_of(:first_name) }
   it { should validate_presence_of(:last_name) }
   it { should validate_presence_of(:email) }
@@ -35,8 +35,8 @@ describe Subscriber, 'validations' do
   it { should validate_format_of(:secondary_phone).to_allow('111-222-3333').not_to_allow('111222333') }
 end
 
-describe Subscriber, 'validations on nil values' do
-  subject { build(:subscriber) }
+describe Member, 'validations on nil values' do
+  subject { build(:member) }
 
   it 'allows email to be nil' do
     subject.email = nil
@@ -80,16 +80,16 @@ describe Subscriber, 'validations on nil values' do
   end
 end
 
-describe Subscriber, '#name' do
-  subject { create(:subscriber, :first_name => 'Tim', :last_name => 'Bell') }
+describe Member, '#name' do
+  subject { create(:member, :first_name => 'Tim', :last_name => 'Bell') }
 
   it 'returns the members full name' do
     subject.full_name.should == 'Tim Bell'
   end
 end
 
-describe Subscriber, 'before validation' do
-  subject { build(:subscriber, :primary_phone => '111.222/33.33', :secondary_phone => '1112223333') }
+describe Member, 'before validation' do
+  subject { build(:member, :primary_phone => '111.222/33.33', :secondary_phone => '1112223333') }
 
   it 'strips formatting' do
     subject.valid?

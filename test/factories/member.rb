@@ -1,9 +1,9 @@
 FactoryGirl.define do
-  factory :subscriber do
+  factory :member do
     first_name    { Faker::Name.first_name }
     last_name     { Faker::Name.last_name }
     email         { Faker::Internet.email }
-    source        { Subscriber::SOURCES.sample }
+    source        { Member::SOURCES.sample }
     address1      { Faker::Address.street_address }
     city          { Faker::Address.city }
     state         { PscVariables::STATES.values.map{ |h|h['abbreviation']}.sample }
