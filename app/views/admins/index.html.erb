@@ -5,6 +5,7 @@
     <tr>
       <th> Name </th>
       <th> Email </th>
+      <th> Status </th>
       <th></th>
     </tr>
   </thead>
@@ -14,11 +15,16 @@
     <tr id='<%= element_id(admin) -%>'>
       <td><%= link_to admin.name, edit_admin_path(admin) %></td>
       <td><%= admin.email %></td>
+      <td><%= admin.active? ? 'Active' : 'Inactive' %></td>
       <td>
         <% if current_admin.id == admin.id -%>
           &nbsp;
         <% else -%>
-          <%= link_to 'Destroy', admin, :method => :delete, :data => { :confirm => 'Are you sure?' } %>
+          <% if admin.active? -%>
+            <%= link_to 'Deactivate', admin, :method => :delete, :data => { :confirm => 'Are you sure?' } %>
+          <% else -%>
+            <%= link_to 'Reactivate', admin_path(admin, :admin => { :active => true }), :method => :put %>
+          <% end -%>
         <% end -%>
       </td>
     </tr>

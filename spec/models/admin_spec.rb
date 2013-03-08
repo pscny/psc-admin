@@ -4,6 +4,8 @@ describe Admin do
   it { should be_a(Mongoid::Document) }
   it { should be_a(Mongoid::Timestamps) }
   it { should have_field(:name) }
+  it { should have_field(:email) }
+  it { should have_field(:active).of_type(Boolean).with_default_value_of(true) }
 end
 
 describe Admin, '.find_or_create_from_auth_hash' do
@@ -70,5 +72,15 @@ describe Admin, '.create_from_auth_hash' do
       :email => 'admin@example.com',
       :name  => 'First McLast'
     })
+  end
+end
+
+describe Admin, '#deactivate!' do
+  subject { create(:admin, :active => true ) }
+
+  it 'should set active to false' do
+    subject.should be_active
+    subject.deactivate!
+    subject.should_not be_active
   end
 end
