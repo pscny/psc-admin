@@ -6,6 +6,8 @@ module NavigationHelpers
       new_admin_session_path
     when /^the homepage$/
       root_path
+    when /^the signin page$/
+      sign_in_path
 
     else
       begin

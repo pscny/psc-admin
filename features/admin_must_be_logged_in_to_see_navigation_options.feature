@@ -11,8 +11,8 @@ Feature:
 
   Scenario: visitor can not go to protected routes
     When I go to the admins page
-    Then I should see "You need to sign in or sign up before continuing."
-    And I should be on the login page
+    Then I should see "Please log in"
+    And I should be on the signin page
     When I am logged in
     And I am on the admins page
     Then I should be on the admins page
