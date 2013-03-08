@@ -1,18 +1,29 @@
-Given /^I am logged into gmail as:$/ do |table|
-  base_admin = {
-    :email      => Faker::Internet.email,
-    :first_name => 'Jonathon',
-    :last_name  => 'Storer',
-    :name       => Faker::Name.name
-  }
-
-  admin = table.transpose.hashes.first
-
-  base_admin.merge!(admin)
-
-  OmniAuth.config.mock_auth[:google_apps] = OmniAuth::AuthHash.new({
-    :provider => 'google_apps',
-    :uid      => 'http://pscny.org/openid?id=104471331717335644878',
-    :info     => base_admin
-  })
+def mock_admin(admin)
+  base = { :email => Faker::Internet.email, :name => Faker::Name.name }
+  base.merge!(admin)
+  OmniAuth.config.mock_auth[:google_apps] = OmniAuth::AuthHash.new({ :info => base })
 end
+
+def login
+  visit('/')
+  click_link('Login')
+end
+
+Given /^I am logged into gmail as:$/ do |table|
+  mock_admin table.transpose.hashes.first
+end
+
+Given /^I am logged in$/ do
+  admin = FactoryGirl.create(:admin)
+
+  mock_admin({ :email => admin.email, :name => admin.name })
+
+  login
+end
+
+Given /^I am logged in as:$/ do |table|
+  admin = FactoryGirl.create(:admin, table.hashes.first)
+  mock_admin({ :email => admin.email, :name => admin.name })
+  login
+end
+

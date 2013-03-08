@@ -9,4 +9,14 @@ Feature:
       | name  | Mister McLast     |
     And I am on the homepage
     When I follow "Login"
-    Then I should be logged in as "admin@example.com"
+    Then I should be logged in as "Mister McLast"
+
+  Scenario: admins can log out
+    Given I am logged into gmail as:
+      | email | admin@example.org |
+      | name  | Mister McLast     |
+    And I am on the homepage
+    When I follow "Login"
+    Then I should be logged in as "Mister McLast"
+    When I follow "Logout"
+    Then I should see "Login"
