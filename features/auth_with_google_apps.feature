@@ -11,7 +11,6 @@ Feature:
     When I follow "Login"
     Then I should be logged in as "Mister McLast"
 
-  @thisone
   Scenario: inactive admins are logged out
     Given the following admins exist:
       | email             | active |
