@@ -24,7 +24,6 @@ class AdminsController < ApplicationController
 
   def update
     @admin = Admin.find(params[:id])
-    params[:admin].delete(:password) if params[:admin][:password].blank?
     if @admin.update_attributes(params[:admin])
       flash.keep.notice = "Successfully updated #{@admin.name}"
       redirect_to admins_path
@@ -35,8 +34,8 @@ class AdminsController < ApplicationController
 
   def destroy
     @admin = Admin.find(params[:id])
-    if @admin.destroy
-      flash.keep.notice = "Successfully deleted #{@admin.name}"
+    if @admin.deactivate!
+      flash.keep.notice = "#{@admin.name} has been deactivated"
     end
     redirect_to admins_path
   end

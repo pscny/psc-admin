@@ -63,14 +63,14 @@
                   </p>
                 </li>
                 <li>
-                  <%= link_to destroy_admin_session_path, :method => :delete, :id =>'signout' do -%>
+                  <%= link_to sign_out_path, :method => :delete, :id =>'signout' do -%>
                     Logout <%= icon(:signout) %>
                   <% end -%>
                 </li>
               <% else -%>
                 <li>
-                  <%= link_to new_admin_session_path, :id => 'signin' do -%>
-                    Login <%= icon(:signin) %>
+                  <%= link_to '/auth/google_apps' do %>
+                    Login <%= content_tag(:span, icon('google-plus')) %>
                   <% end -%>
                 </li>
               <% end -%>
