@@ -15,9 +15,7 @@ end
 
 Given /^I am logged in$/ do
   admin = FactoryGirl.create(:admin)
-
   mock_admin({ :email => admin.email, :name => admin.name })
-
   login
 end
 
