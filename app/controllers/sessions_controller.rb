@@ -2,8 +2,14 @@ class SessionsController < ApplicationController
   skip_before_filter :authenticate!
 
   def create
-    sign_in Admin.find_or_create_from_auth_hash(auth_hash)
-    redirect_to root_path
+    admin = Admin.find_or_create_from_auth_hash(auth_hash)
+    if admin.active?
+      sign_in admin
+      redirect_to root_path
+    else
+      flash.keep.alert = 'Your account is inactive'
+      redirect_to sign_in_path
+    end
   end
 
   def destroy
