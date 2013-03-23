@@ -1,4 +1,4 @@
-<%= simple_form_for(subscriber, :html => { :class => 'form-horizontal'} ) do |f| %>
+<%= simple_form_for(member, :html => { :class => 'form-horizontal'} ) do |f| %>
   <%= f.error_notification %>
 
   <div class='form-inputs'>
@@ -27,7 +27,7 @@
       <%= f.input_field :secondary_phone  %>
     <% end -%>
 
-    <% collection = Subscriber::SOURCES.map{ |source| [ source.titleize, source ] } %>
+    <% collection = Member::SOURCES.map{ |source| [ source.titleize, source ] } %>
     <%= f.input :source, :prompt => 'Please select a source', :wrapper => :prepend do %>
       <%= content_tag(:span, icon(:shopping_cart), :class => 'add-on') %>
       <%= f.input_field :source, :collection => collection %>

@@ -3,8 +3,8 @@ module FetchHelpers
     fetch Admin, :email => email
   end
 
-  def fetch_subscriber(email)
-    fetch Subscriber, :email => email
+  def fetch_member(email)
+    fetch Member, :email => email
   end
 
   def fetch_concert_series(name)

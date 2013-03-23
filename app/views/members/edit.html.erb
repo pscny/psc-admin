@@ -1,0 +1,9 @@
+<h1>Editing <%= @member.full_name %></h1>
+
+<%= render 'form', :member => @member %>
+
+<% content_for :actions do -%>
+  <li><%= link_to 'Show', @member %></li>
+  <li><%= link_to 'Destroy', @member, :method => :delete, :data => { :confirm => 'Are you sure?' } %></li>
+  <li><%= link_to 'Back', members_path %></li>
+<% end -%>

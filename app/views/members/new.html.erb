@@ -1,0 +1,7 @@
+<h1>New member</h1>
+
+<%= render 'form', :member => @member %>
+
+<% content_for :actions do -%>
+  <li><%= link_to 'Back', members_path %></li>
+<% end -%>
