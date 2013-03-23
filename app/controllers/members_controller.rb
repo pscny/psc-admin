@@ -4,9 +4,9 @@ class MembersController < ApplicationController
     @members = Member.page(params[:page] || 1)
     if @query = params[:query]
       regex = /#{@query}/i
-      @members = @members.or([ { :first_name => regex },
-                                       { :last_name  => regex },
-                                       { :email      => regex } ])
+      @members = @members.or([{ :first_name => regex },
+                              { :last_name  => regex },
+                              { :email      => regex }])
     end
     flash.alert = 'No Members Found' if @members.none?
     @members
