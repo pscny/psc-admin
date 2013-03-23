@@ -17,7 +17,7 @@ namespace :psc do
       print "Creating development data..."
 
       30.times do
-        FactoryGirl.create(:members)
+        FactoryGirl.create(:member)
       end
 
       print "done.\n"
