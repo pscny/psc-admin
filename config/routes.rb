@@ -5,9 +5,9 @@ PscAdmin::Application.routes.draw do
   match 'sign_out',                :controller => :sessions, :action => :destroy, :as => :sign_out
 
   resources :admins, :except => [ :new ]
-  resources :subscribers
   resources :concert_series
   resources :concerts
+  resources :members
 
-  root :to => 'subscribers#index'
+  root :to => 'members#index'
 end

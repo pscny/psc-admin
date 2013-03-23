@@ -1,0 +1,32 @@
+<h1>Listing members</h1>
+
+<%= form_tag(members_path, :method => 'get', :class => 'form-search') do %>
+  <%= search_field_tag(:query, @query, :class => 'input-medium search-query' ) %>
+  <%= submit_tag('Search', :class => 'btn' ) %>
+<% end %>
+
+<table class='table table-hover table-striped'>
+  <thead>
+    <tr>
+      <th> Name </th>
+      <th> Email </th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @members.each do |member| %>
+    <tr id='<%= element_id(member) -%>'>
+      <td><%= link_to member.full_name, edit_member_path(member) %></td>
+      <td><%= member.email -%></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br />
+
+<%= paginate @members %>
+
+<% content_for :actions do -%>
+  <li><%= link_to 'New Member', new_member_path %></li>
+<% end -%>

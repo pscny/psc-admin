@@ -1,0 +1,6 @@
+<p id="notice"><%= notice %></p>
+
+<% content_for :actions do -%>
+  <li><%= link_to 'Edit', edit_member_path(@member) %></li>
+  <li><%= link_to 'Back', members_path %></li>
+<% end -%>
