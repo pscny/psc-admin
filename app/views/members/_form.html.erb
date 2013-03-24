@@ -17,6 +17,10 @@
       <%= f.input_field :email %>
     <% end -%>
 
+    <%= f.input :mailing_list, :wrapper => :prepend do %>
+      <%= f.check_box :mailing_list %>
+    <% end -%>
+
     <%= f.input :primary_phone, :wrapper => :prepend do %>
       <%= content_tag(:span, icon(:mobile_phone), :class => 'add-on') %>
       <%= f.input_field :primary_phone %>
