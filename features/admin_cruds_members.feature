@@ -7,6 +7,18 @@ Feature:
     Given I am logged in
     And I go to the homepage
 
+  Scenario: Admin creates a mailing list member
+    When I follow "Members"
+    And I follow "New Member"
+    And fill in "First name" with "James"
+    And fill in "Last name" with "Zevin"
+    And fill in "Email" with "james.zevin@example.com"
+    And I check "Mailing List"
+    And I press "Create Member"
+    Then I should see "James Zevin was successfully created."
+    And I should see "James Zevin" within the element for member "james.zevin@example.com"
+    And I should see "james.zevin@example.com" within the element for member "james.zevin@example.com"
+
   Scenario: Admin creates a member
     When I follow "Members"
     And I follow "New Member"

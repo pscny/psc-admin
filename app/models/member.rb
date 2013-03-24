@@ -17,17 +17,17 @@ class Member
   field :email
   field :source
   field :received_at, :type => Date
+  field :mailing_list, :type => Boolean
 
   validates :first_name,      :presence  => true
   validates :last_name,       :presence  => true
-  validates :email,           :presence  => true, :uniqueness => true, :allow_nil => true
-  validates :source,          :inclusion => { :in => SOURCES }
+  validates :email,           :uniqueness => true, :format => { :with => /.+@.+\..+/, :message => 'please enter an email address like handle@domain.net', :allow_blank => true }
+  validates :source,          :inclusion => { :in => SOURCES, :allow_blank => true }
   validates :address1,        :presence  => true, :if => 'address2.present?'
-  validates :zip_code,        :presence  => true, :format => { :with => /^\d{5}-?\d{4}?$/, :message => 'should be formatted like ##### or #####-####' }
-  validates :city,            :presence  => true, :allow_nil => true
-  validates :state,           :inclusion => { :in => PscVariables::STATES.values.map{|h|h['abbreviation']}, :allow_nil => true }
-  validates :primary_phone,   :format    => { :with => /^\d{3}-\d{3}-\d{4}$/, :message => 'please enter the phone number in the following format ###-###-####' }, :presence  => true, :allow_nil => true
-  validates :secondary_phone, :format    => { :with => /^\d{3}-\d{3}-\d{4}$/, :message => 'please enter the phone number in the following format ###-###-####' }, :allow_nil => true
+  validates :zip_code,        :format => { :with => /^\d{5}-?\d{4}?$/, :message => 'should be formatted like ##### or #####-####', :allow_blank => true }
+  validates :state,           :inclusion => { :in => PscVariables::STATES.values.map{|h|h['abbreviation']}, :allow_blank => true }
+  validates :primary_phone,   :format    => { :with => /^\d{3}-\d{3}-\d{4}$/, :message => 'please enter the phone number in the following format ###-###-####' }, :allow_blank => true
+  validates :secondary_phone, :format    => { :with => /^\d{3}-\d{3}-\d{4}$/, :message => 'please enter the phone number in the following format ###-###-####' }, :allow_blank => true
 
   before_validation :format_primary_phone,   :if => 'primary_phone.present?'
   before_validation :format_secondary_phone, :if => 'secondary_phone.present?'
