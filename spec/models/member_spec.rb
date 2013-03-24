@@ -22,6 +22,7 @@ end
 describe Member, 'validations' do
   it { should validate_presence_of(:first_name) }
   it { should validate_presence_of(:last_name) }
+  it { should validate_presence_of(:email) }
   it { should validate_uniqueness_of(:email) }
   it { should validate_format_of(:email).to_allow('handle@domain.com').not_to_allow('bad@bad') }
   it { should validate_inclusion_of(:source).to_allow(%w{ brochure concert online renewal }) }
