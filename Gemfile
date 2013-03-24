@@ -27,13 +27,16 @@ group :assets do
   gem 'font_awesome', '~> 3.0'
 end
 
+group :production, :test do
+  gem 'factory_girl_rails'
+  gem 'faker'
+end
+
 group :test do
   gem 'bourne', '~> 1.3.2'
   gem 'cucumber-rails', :require => false
   gem 'database_cleaner'
   gem 'debugger'
-  gem 'factory_girl_rails'
-  gem 'faker'
   gem 'launchy'
   gem 'mocha', '= 0.13.2'
   gem 'mongoid-rspec'
