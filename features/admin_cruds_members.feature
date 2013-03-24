@@ -13,7 +13,7 @@ Feature:
     And fill in "First name" with "James"
     And fill in "Last name" with "Zevin"
     And fill in "Email" with "james.zevin@example.com"
-    And I check "Mailing List"
+    And I check "Mailing list"
     And I press "Create Member"
     Then I should see "James Zevin was successfully created."
     And I should see "James Zevin" within the element for member "james.zevin@example.com"
