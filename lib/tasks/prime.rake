@@ -16,6 +16,46 @@ namespace :psc do
 
       print "Creating development data..."
 
+      concerts = [
+        { :name    => 'Arens',
+          :concerts => [
+            { :date => 'Oct 20, 2012',   :name => 'MFM I'            },
+            { :date => 'Nov 17, 2012',   :name => 'Morgenstern Trio' },
+            { :date => 'Feb 9, 2013',    :name => 'Emanuel Ax'       },
+            { :date => 'March 16, 2013', :name => 'ECCO'             },
+            { :date => 'March 23, 2013', :name => 'Vadim Gluzman'    },
+            { :date => 'May 11, 2013',   :name => 'MFM III'          }
+          ]
+        },
+        { :name    => 'Mann',
+          :concerts => [
+            { :date => 'Nov 10, 2012',   :name => 'Pacifica Quartet'           },
+            { :date => 'Dec 15, 2012',   :name => 'PF and Guarneri (Brentano)' },
+            { :date => 'March 9, 2013',  :name => 'MFM II'                     },
+            { :date => 'April 6, 2013',  :name => 'Juilliard Quartet'          },
+            { :date => 'April 20, 2013', :name => 'Ebene Quartet'              },
+            { :date => 'April 27, 2013', :name => 'Vladimir Feltsman'          }
+          ]
+        },
+        { :name    => 'Festival',
+          :concerts => [
+            { :date => 'Nov 4, 2012',    :name => 'Horszowski Trio'              },
+            { :date => 'Dec 9, 2012',    :name => 'Goode and Shafer'             },
+            { :date => 'March 24, 2013', :name => 'Yevgeny Sudbin'               },
+            { :date => 'Apr 7, 2013',    :name => 'Johannes Quartet'             },
+            { :date => 'Apr 14, 2013',   :name => 'Balsom and Scottish Ensemble' },
+            { :date => 'May 5, 2013',    :name => 'Rafal Blechacz'               }
+          ]
+        }
+      ]
+
+      concerts.each do |series|
+        cs = ConcertSeries.create(:name => series[:name])
+        series[:concerts].each do |concert|
+          cs.concerts.create(concert)
+        end
+      end
+
       30.times do
         FactoryGirl.create(:member)
       end
