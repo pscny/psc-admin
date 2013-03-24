@@ -4,6 +4,15 @@ namespace :psc do
       raise "You cannot run this task in a production environment. Aborting..." if Rails.env.production?
     end
 
+    task :production_warning => :environment do
+      if Rails.env.production?
+        puts "\d"
+        puts "Warning: This task is being run in production."
+        puts "Warning: This could have unwanted consequences."
+        puts "\d"
+      end
+    end
+
     desc "Creates some sample data for testing locally"
     task :prime => [:ensure_non_production_environment, 'mongo:drop']  do
       require 'factory_girl_rails'
