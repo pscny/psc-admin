@@ -1,6 +1,6 @@
 namespace :mongo do
   desc "Drop the current database"
-  task :drop => ["psc:dev:ensure_non_production_environment", :environment] do
-    Mongoid.default_session.drop
+  task :drop => ['psc:dev:production_warning', :environment] do
+    Mongoid.default_session.collections.each(&:drop)
   end
 end

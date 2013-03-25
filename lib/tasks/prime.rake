@@ -14,7 +14,7 @@ namespace :psc do
     end
 
     desc "Creates some sample data for testing locally"
-    task :prime => [:ensure_non_production_environment, 'mongo:drop']  do
+    task :prime => [:production_warning, 'mongo:drop']  do
       require 'factory_girl_rails'
       require 'faker'
 
