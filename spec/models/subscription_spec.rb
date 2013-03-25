@@ -5,6 +5,7 @@ describe Subscription do
   it { should be_timestamped_document }
 
   it { should belong_to(:member) }
+  it { should belong_to(:concert_series) }
 
   it { should have_field(:quantity).of_type(Integer) }
   it { should have_field(:reserved).of_type(Boolean) }

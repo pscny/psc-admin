@@ -3,6 +3,7 @@ class Subscription
   include Mongoid::Timestamps
 
   belongs_to :member
+  belongs_to :concert_series
 
   field :quantity, :type => Integer
   field :reserved, :type => Boolean

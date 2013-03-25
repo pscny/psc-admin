@@ -3,6 +3,7 @@ class ConcertSeries
   include Mongoid::Timestamps
 
   has_many :concerts
+  has_many :subscriptions
 
   field :name
 end

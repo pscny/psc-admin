@@ -14,6 +14,8 @@ class SubscriptionsController < ApplicationController
     @member       = Member.find(params[:member_id])
     @subscription = @member.subscriptions.build(params[:subscription])
     if @subscription.save
+      flash.keep.notice = "#{@member.full_name} is subscribed to #{@subscription.concert_series.name}"
+      redirect_to :action => :index
     else
     end
   end
@@ -24,5 +26,4 @@ class SubscriptionsController < ApplicationController
   def set_tab
     @tab = 'members'
   end
-
 end
