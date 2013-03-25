@@ -40,4 +40,10 @@ class AdminsController < ApplicationController
     redirect_to admins_path
   end
 
+  private
+
+  def set_tab
+    @tab = 'admins'
+  end
+
 end

@@ -4,6 +4,8 @@ describe Member do
   it { should be_a(Mongoid::Document) }
   it { should be_timestamped_document }
 
+  it { should have_many(:subscriptions) }
+
   it { should have_field(:first_name) }
   it { should have_field(:last_name) }
   it { should have_field(:address1) }

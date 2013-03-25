@@ -16,7 +16,7 @@
   <tbody>
   <% @members.each do |member| %>
     <tr id='<%= element_id(member) -%>'>
-      <td><%= link_to member.full_name, edit_member_path(member) %></td>
+      <td><%= link_to member.full_name, member_path(member) %></td>
       <td><%= member.email -%></td>
     </tr>
   <% end %>

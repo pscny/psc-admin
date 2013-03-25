@@ -52,4 +52,11 @@ class MembersController < ApplicationController
 
     redirect_to members_url
   end
+
+  private
+
+  def set_tab
+    @tab = 'members'
+  end
+
 end

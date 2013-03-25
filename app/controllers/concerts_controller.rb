@@ -42,4 +42,11 @@ class ConcertsController < ApplicationController
     @concert.destroy
     redirect_to concerts_url
   end
+
+  private
+
+  def set_tab
+    @tab = 'concerts'
+  end
+
 end

@@ -1,8 +1,7 @@
-<p id='notice'><%= notice %></p>
 <h1><%= @member.full_name %></h1>
 
 <ul class='nav nav-tabs'>
-  <li>
+  <li class='active'>
     <%= link_to('Subscriptions', member_subscriptions_path(@member)) -%>
   </li>
 </ul>
@@ -10,4 +9,9 @@
 <% content_for :actions do -%>
   <li><%= link_to 'Edit', edit_member_path(@member) %></li>
   <li><%= link_to 'Back', members_path %></li>
+<% end -%>
+
+<% content_for :subnav do -%>
+  <li class='nav-header'>Subscriptions</li>
+  <li><%= link_to 'New Subscription', new_member_subscription_path(@member) %></li>
 <% end -%>
