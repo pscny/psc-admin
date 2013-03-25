@@ -23,3 +23,5 @@ Feature:
     And I press "Create Subscription"
     Then I should see "Jake Douglas is subscribed to Bach"
     And I should see "Bach" within the element for subscription "Bach"
+    And I should see "1" within the element for subscription "Bach"
+    And I should see "C-134" within the element for subscription "Bach"

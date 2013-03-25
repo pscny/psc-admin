@@ -12,6 +12,8 @@
       <thead>
         <tr>
           <th> Concert Series </th>
+          <th> Quantity </th>
+          <th> Seat or ticket number </th>
         </tr>
       </thead>
 
@@ -19,6 +21,8 @@
       <% @subscriptions.each do |subscription| %>
         <tr id='<%= element_id(subscription) -%>'>
           <td><%= subscription.concert_series.name %></td>
+          <td><%= subscription.quantity %></td>
+          <td><%= subscription.seat_or_ticket_number %></td>
         </tr>
       <% end %>
       </tbody>
