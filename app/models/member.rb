@@ -2,6 +2,8 @@ class Member
   include Mongoid::Document
   include Mongoid::Timestamps
 
+  has_many :subscriptions
+
   SOURCES = %w{ brochure concert online renewal }
 
   field :first_name

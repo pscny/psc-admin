@@ -8,7 +8,8 @@ module HtmlSelectorsHelpers
     when /^the page$/
       "html > body"
     when /^the element for (.+) "(.+)"$/
-      '#' + element_id(send("fetch_#{$1}", $2))
+      model, param = $1, $2
+      '#' + element_id(send("fetch_#{model.downcase.gsub(' ','_')}", param))
     when /^the link "([^"]+)"$/
       "a:contains('#{$1}')"
     when /^a link with the text "([^"]+)"$/

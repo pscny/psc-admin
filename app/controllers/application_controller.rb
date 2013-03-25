@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   before_filter :authenticate!
+  before_filter :set_tab
 
   def current_admin
     @__current_admin ||= Admin.where(:id => session['admin_id']).first
@@ -31,5 +32,9 @@ class ApplicationController < ActionController::Base
      flash.keep.alert = 'Please log in'
      redirect_to sign_in_path
    end
+  end
+
+  def set_tab
+    @tab = nil
   end
 end

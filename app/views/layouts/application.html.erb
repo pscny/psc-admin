@@ -48,10 +48,10 @@
           <div class="container-fluid nav-collapse">
             <%= admin_only do -%>
               <ul class="nav">
-                <li><%= link_to 'Admins', admins_path -%></li>
-                <li><%= link_to 'Members', members_path -%></li>
-                <li><%= link_to 'Concert Series', concert_series_index_path -%></li>
-                <li><%= link_to 'Concerts', concerts_path -%></li>
+                <li class="<%= 'active' if @tab.to_s == 'admins'         %>"> <%= link_to 'Admins',         admins_path -%>               </li>
+                <li class="<%= 'active' if @tab.to_s == 'members'        %>"> <%= link_to 'Members',        members_path -%>              </li>
+                <li class="<%= 'active' if @tab.to_s == 'concert_series' %>"> <%= link_to 'Concert Series', concert_series_index_path -%> </li>
+                <li class="<%= 'active' if @tab.to_s == 'concerts'       %>"> <%= link_to 'Concerts',       concerts_path -%>             </li>
               </ul>
             <% end -%>
 
@@ -89,6 +89,11 @@
                 <li class="nav-header">Actions</li>
                 <%= yield :actions %>
               <% end %>
+
+              <% if content_for?(:subnav) %>
+                <%= yield :subnav %>
+              <% end %>
+
             </ul>
           </div><!--/.well -->
         </div><!--/span-->
@@ -98,9 +103,11 @@
         </div>
       </div><!--/row-->
 
-      <footer>
-        <p>&copy; Peoples' Symphony Concerts Admin Database 2013</p>
-      </footer>
+      <div id='footer'>
+        <div class='container'>
+          <p>&copy; Peoples' Symphony Concerts Admin Database 2013</p>
+        </div>
+      </div>
 
     </div> <!-- /container -->
 

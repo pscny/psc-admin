@@ -7,7 +7,9 @@ PscAdmin::Application.routes.draw do
   resources :admins, :except => [ :new ]
   resources :concert_series
   resources :concerts
-  resources :members
+  resources :members do
+    resources :subscriptions
+  end
 
   root :to => 'members#index'
 end

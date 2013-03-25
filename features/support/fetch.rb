@@ -11,6 +11,12 @@ module FetchHelpers
     fetch ConcertSeries, :name => name
   end
 
+  def fetch_subscription(name)
+    warn "Bad Fetch"
+    series = fetch ConcertSeries, :name => name
+    series.subscriptions.last
+  end
+
   private
 
   def fetch(klass, where_opts)

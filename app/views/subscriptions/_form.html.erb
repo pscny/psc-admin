@@ -1,0 +1,31 @@
+<%= simple_form_for([member, subscription], :html => { :class => 'form-horizontal'} ) do |f| %>
+  <%= f.error_notification %>
+
+  <div class='form-inputs'>
+
+    <%= f.association :concert_series,
+      :collection   => ConcertSeries.all.to_a,
+      :label_method => :name,
+      :value_method => :id,
+      :prompt => 'Select a Concert Series' %>
+
+    <%= f.input :reserved, :wrapper => :prepend do %>
+      <%= f.check_box :reserved %>
+    <% end -%>
+
+    <%= f.input :quantity, :wrapper => :prepend do %>
+      <%= content_tag(:span, '#', :class => 'add-on') %>
+      <%= f.input_field :quantity %>
+    <% end -%>
+
+    <%= f.input :seat_or_ticket_number , :wrapper => :prepend do %>
+      <%= content_tag(:span, '#', :class => 'add-on') %>
+      <%= f.input_field :seat_or_ticket_number   %>
+    <% end -%>
+  </div>
+
+  <div class='form-actions'>
+    <%= f.button :submit %>
+  </div>
+<% end %>
+
